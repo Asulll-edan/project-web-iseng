@@ -1,0 +1,728 @@
+BUATKAN WEBSITE RESTORAN MODERN PREMIUM “RUMAHNYA ANAK SEKOLAH” FULLSTACK PROFESSIONAL MENGGUNAKAN LARAVEL 8(PHP 7.4) + POSTGRESQL
+
+Buat website restoran modern premium bernama:
+“RUMAHNYA ANAK SEKOLAH”
+
+Konsep website:
+- cinematic luxury restaurant
+- premium food ecommerce
+- modern ordering platform
+- immersive user experience
+- startup-level dashboard
+- enterprise restaurant management system
+
+Style website harus terasa:
+- premium
+- elegant
+- cinematic
+- immersive
+- smooth
+- responsive
+- interactive
+- professional
+- realtime
+
+Website harus memiliki:
+- customer system
+- POS / kasir system
+- admin management system
+- realtime order tracking
+- membership & cashback system
+- reservation system
+- wallet system
+- analytics dashboard
+- kitchen / cooking management
+
+==================================================
+TECH STACK
+==================================================
+
+Gunakan:
+
+BACKEND:
+- Laravel 8
+- PHP 7.4
+- PostgreSQL
+- Eloquent ORM
+- REST API ready structure
+- Laravel Authentication
+- Middleware role system
+- Queue & Notification
+
+FRONTEND:
+- Blade Template
+- HTML5
+- CSS3
+- JavaScript
+- AJAX
+- GSAP
+- AOS / ScrollReveal
+- Swiper.js
+- ApexCharts / Chart.js
+- VanillaTilt.js
+
+==================================================
+DESIGN CONCEPT
+==================================================
+
+Gunakan konsep design:
+- luxury modern restaurant
+- glassmorphism
+- floating UI
+- blur transparent
+- cinematic gradient
+- ambient lighting
+- soft shadow
+- animated hover
+- smooth transition
+- modern typography
+
+==================================================
+COLOR PALETTE & UI VISUAL CONCEPT
+==================================================
+
+Gunakan kombinasi warna premium modern yang nyaman di mata, elegan, warm, dan memanjakan user.
+
+JANGAN gunakan warna terlalu mencolok atau terlalu neon.
+
+Gunakan kombinasi utama:
+- sage green lembut (hijau sekolah)
+- cream soft
+- warm beige
+- soft brown
+- charcoal gelap elegan
+
+Konsep warna:
+- warm educational cozy aesthetic
+- modern student lounge vibe
+- cinematic premium tone
+- cozy elegant atmosphere
+
+Primary Color:
+- Sage Green
+- Soft Warm Beige
+- Cream White
+
+Secondary Color:
+- Soft Brown
+- Warm White
+- Beige Soft
+
+Dark Mode:
+- Dark Green Charcoal
+- Deep Brown Black
+- Soft Dark Gradient
+
+Gunakan color balance agar:
+- tidak sakit mata
+- nyaman dilihat lama
+- clean
+- modern
+- immersive
+- luxury
+- premium
+
+==================================================
+VISUAL EFFECT
+==================================================
+
+Tambahkan:
+- soft glow effect
+- ambient lighting
+- gradient blur
+- warm cinematic overlay
+- soft shadow
+- elegant hover color
+- smooth transition
+- glassmorphism transparency
+- floating blur background
+
+==================================================
+UI COMPONENT STYLE
+==================================================
+
+BUTTON:
+- rounded premium button
+- magnetic hover
+- smooth glow hover
+- gradient premium button
+- soft shadow
+
+CARD:
+- glassmorphism card
+- blur transparency
+- floating card effect
+- smooth hover lift
+- premium border glow
+
+NAVBAR:
+- transparent blur navbar
+- animated scroll effect
+- floating navigation
+- premium active indicator
+
+BACKGROUND:
+- cinematic gradient
+- soft ambient blur
+- warm premium tone
+- luxury restaurant atmosphere
+
+TYPOGRAPHY:
+- modern elegant font
+- premium spacing
+- readable contrast
+- clean hierarchy
+
+==================================================
+USER EXPERIENCE
+==================================================
+
+Pastikan seluruh warna dan UI:
+- tidak terlalu terang
+- tidak terlalu gelap
+- tidak over saturated
+- nyaman untuk penggunaan lama
+- modern dan elegant
+- cocok untuk restoran premium
+- terasa mahal dan professional
+- smooth dan immersive
+
+Tambahkan:
+- smooth scrolling
+- animated loading screen
+- floating particles
+- realtime toast notification
+- cinematic scrolling
+- magnetic button
+- animated navbar
+- blur overlay
+- floating blur effect
+- animated card tilt
+- premium popup
+- responsive mobile UI
+- dark/light mode
+
+==================================================
+ROLE SYSTEM
+==================================================
+
+Gunakan role:
+- superadmin
+- kasir
+- kitchen
+- customer
+
+Hak akses:
+
+SUPERADMIN:
+- akses penuh semua fitur
+- melihat semua analytics
+- melihat semua transaksi
+- melihat semua membership
+- melihat semua wallet
+- melihat semua pesanan
+- melihat aktivitas staff/kasir
+- mengatur seluruh sistem
+- CRUD menu
+- kelola banner
+- kelola promo
+- kelola voucher
+- kelola user
+- melihat pesanan
+- melihat status kasir
+- approve topup wallet
+- kelola reservasi
+- melihat membership user
+- suspend user
+- push notification
+- analytics dashboard
+
+KASIR:
+- melihat pesanan masuk
+- mengubah status pesanan
+- melihat detail pesanan
+- update status cooking
+- update status selesai
+
+KITCHEN:
+- melihat pesanan realtime
+- update status makanan
+- cooking display mode
+
+CUSTOMER:
+- order makanan
+- reservasi
+- wallet
+- membership
+- review
+- tracking order
+
+==================================================
+LANDING PAGE MODERN
+==================================================
+
+Buat homepage cinematic premium fullscreen.
+
+Tambahkan:
+- fullscreen hero section
+- background video aesthetic makanan sekolah (kantin modern / student café)
+- animated overlay
+- promo slider
+- best seller section
+- animated statistics
+- testimonial customer
+- floating particles
+- scroll reveal animation
+- smooth cinematic transition
+
+Tambahkan banner slider iklan realtime.
+
+Banner:
+- dapat ditambah admin
+- dapat dihapus admin
+- dapat diubah admin
+- multi image slider
+- autoplay slider
+- responsive banner
+
+CTA:
+- Pesan Sekarang
+- Reservasi Tempat
+- Lihat Menu
+
+==================================================
+MENU SYSTEM MODERN
+==================================================
+
+Halaman menu harus modern dan realtime.
+
+Tambahkan:
+- realtime search
+- filter kategori
+- favorite/wishlist
+- best seller badge
+- promo badge
+- detail popup makanan
+- hover animation
+- realtime stock
+- animated add to cart
+- rating & review customer
+
+Gunakan:
+- AJAX realtime
+- no reload experience
+
+MENU DIUBAH MENJADI:
+- Nasi Ayam Geprek Anak Sekolah (menu utama)
+- Mie Instan Premium Kantin
+- Rice Bowl Hemat Pelajar
+- Salad Wrap Sehat Anak Sekolah (best seller)
+- Coffee Anak Sekolah (kopi susu, espresso, americano)
+- Es Teh & Minuman Hemat
+- Gorengan Kantin Premium
+- Dessert & Snack Sekolah (pudding, brownies, roti bakar)
+
+==================================================
+CHECKOUT & ORDER FLOW
+==================================================
+
+Flow order:
+
+1. User memilih menu
+2. Tambah ke cart
+3. Checkout
+4. Generate nomor order random otomatis
+5. Status awal = menunggu
+6. Pesanan masuk realtime ke halaman kasir
+7. Kasir melihat detail pesanan
+8. Kasir mengubah status:
+   - menunggu
+   - cooking
+   - selesai
+9. Jika status selesai:
+   - user mendapatkan tombol “Selesaikan Pesanan”
+10. Jika user menekan selesai:
+   - order benar-benar completed
+   - loyalty point bertambah
+   - cashback membership masuk otomatis
+
+==================================================
+STATUS PESANAN
+==================================================
+
+Gunakan status:
+- menunggu
+- cooking
+- selesai
+- completed
+- dibatalkan
+
+Tambahkan:
+- realtime order tracking
+- timeline pesanan
+- animated status
+- realtime notification
+- cooking estimation
+
+==================================================
+HALAMAN KASIR / POS SYSTEM
+==================================================
+
+Buat halaman kasir modern realtime.
+
+Kasir dapat:
+- melihat seluruh order masuk realtime
+- melihat nomor order random
+- melihat detail user
+- melihat detail makanan
+- melihat quantity
+- melihat note pesanan
+- melihat metode pembayaran
+- mengubah status pesanan
+
+Status:
+- menunggu
+- cooking
+- selesai
+
+Tambahkan:
+- realtime update tanpa reload
+- modern order card
+- sound notification order baru
+- realtime stock reduction
+- responsive kasir dashboard
+- filter status pesanan
+- search nomor order
+
+==================================================
+KITCHEN DISPLAY SYSTEM
+==================================================
+
+Buat halaman kitchen realtime fullscreen.
+
+Kitchen dapat:
+- melihat pesanan masuk
+- melihat detail menu
+- melihat note pesanan
+- melihat estimasi waktu
+- update status cooking
+- update selesai
+
+Tambahkan:
+- fullscreen mode
+- realtime refresh tanpa reload
+- priority color order
+- cooking timer
+- sound notification
+
+==================================================
+USER ORDER TRACKING
+==================================================
+
+User dapat:
+- melihat status pesanan realtime
+- melihat timeline pesanan
+- melihat cooking progress
+- melihat invoice
+- melihat nomor order
+- tombol “Selesaikan Pesanan”
+
+Jika user klik selesai:
+- order berubah menjadi completed
+- loyalty point bertambah
+- cashback otomatis masuk wallet
+
+==================================================
+SOHIBA WALLET SYSTEM
+==================================================
+
+Buat dompet digital internal:
+“SOHIBA WALLET”
+
+Fitur:
+- topup saldo
+- pilih nominal
+- upload bukti transfer
+- pending verification
+- admin approve/reject
+- saldo masuk otomatis
+
+Tambahkan:
+- transaction code unik
+- anti duplicate transaction
+- transaction logs
+- invoice topup
+- payment timer
+
+==================================================
+MEMBERSHIP SYSTEM
+==================================================
+
+Membership TIDAK langsung dimiliki user.
+
+Awalnya user:
+- tidak memiliki membership
+
+Membership otomatis berdasarkan total order:
+
+SILVER:
+- minimal 10+ completed order
+- cashback kecil
+
+GOLD:
+- minimal 30+ completed order
+- cashback sedang
+- promo eksklusif
+
+PLATINUM:
+- minimal 100+ completed order
+- harus membeli membership premium
+- cashback terbesar
+- promo premium
+- priority customer
+- bonus wallet
+
+Tambahkan:
+- cashback otomatis berdasarkan membership
+- loyalty point
+- reward system
+
+Admin dapat:
+- melihat membership semua user
+- approve platinum membership
+- melihat histori cashback
+
+==================================================
+PROFILE USER MODERN
+==================================================
+
+User profile modern seperti aplikasi premium.
+
+User dapat:
+- upload avatar
+- edit username
+- edit email
+- edit password
+- edit nomor HP
+- edit bio profile
+- setting akun
+- dark/light mode
+- melihat histori login
+- melihat histori transaksi
+- melihat saldo wallet
+- logout semua device
+
+Tambahkan:
+- animated profile card
+- profile statistics
+- profile completion
+- bio profile
+- custom profile settings
+
+JANGAN tampilkan membership di profile jika user belum memenuhi syarat.
+
+==================================================
+RESERVATION SYSTEM
+==================================================
+
+User dapat:
+- pilih meja visual
+- pilih tanggal
+- pilih jam
+- pilih jumlah orang
+- request dekorasi/event
+
+Admin dapat:
+- approve/reject reservasi
+- booking calendar
+- realtime table status
+
+==================================================
+LIVE CHAT & CHATBOT
+==================================================
+
+Tambahkan:
+- floating chat bubble
+- WhatsApp integration
+- realtime admin live chat
+- AI chatbot sederhana
+
+Chatbot bisa menjawab:
+- jam buka
+- reservasi
+- promo
+- menu favorit
+- status pesanan
+
+==================================================
+ADMIN PANEL MODERN
+==================================================
+
+Buat admin dashboard seperti SaaS premium.
+
+Design:
+- glassmorphism
+- floating cards
+- animated analytics
+- modern sidebar
+- responsive dashboard
+
+Admin dapat:
+- melihat semua order realtime
+- melihat status kasir
+- melihat pesanan cooking
+- melihat pesanan selesai
+- melihat semua transaksi
+- melihat wallet user
+- melihat membership user
+- melihat cashback user
+- CRUD menu
+- upload multi image
+- update stok realtime
+- kelola banner slider
+- membuat promo
+- membuat voucher
+- flash sale
+- push notification
+- popup promo
+- suspend user
+
+Tambahkan analytics:
+- grafik penjualan
+- grafik transaksi
+- grafik customer
+- grafik membership
+- grafik wallet
+- grafik cashback
+- statistik realtime
+
+Gunakan:
+- ApexCharts / Chart.js
+
+==================================================
+DATABASE POSTGRESQL
+==================================================
+
+Gunakan PostgreSQL.
+
+Buat relational database professional:
+
+AUTH:
+- users
+- user_profiles
+- login_histories
+- roles
+
+MENU:
+- menu_categories
+- menus
+- menu_images
+- menu_reviews
+- favorites
+
+ORDER:
+- carts
+- cart_items
+- orders
+- order_items
+- order_status_logs
+
+PAYMENT:
+- payments
+- payment_methods
+- invoices
+
+WALLET:
+- wallets
+- wallet_transactions
+- topup_requests
+
+MEMBERSHIP:
+- memberships
+- membership_transactions
+- loyalty_points
+- cashback_logs
+
+RESERVATION:
+- restaurant_tables
+- reservations
+
+PROMO:
+- vouchers
+- banners
+- flash_sales
+- promo_histories
+
+CHAT:
+- live_chats
+- chatbot_logs
+
+SYSTEM:
+- notifications
+- activity_logs
+- settings
+
+Gunakan:
+- foreign key
+- indexing
+- optimized query
+- transaction-safe database
+- scalable structure
+
+==================================================
+SECURITY SYSTEM
+==================================================
+
+Gunakan:
+- Laravel Auth
+- Middleware role protection
+- CSRF protection
+- validation request
+- secure session
+- anti SQL injection
+- upload validation
+- anti spam
+- anti duplicate checkout
+- anti negative stock
+- activity logs
+- rate limiter
+
+==================================================
+FINAL RESULT
+==================================================
+
+Hasil akhir website harus terasa seperti:
+- premium restaurant platform
+- modern ecommerce food app
+- luxury culinary website
+- cinematic ordering experience
+- realtime restaurant management system
+- enterprise-level dashboard
+
+Semua fitur harus:
+- realtime
+- saling terhubung
+- responsive
+- scalable
+- premium UI/UX
+- database-driven
+- smooth interaction
+- clean architecture
+- professional quality
+
+
+buat dari controllernya aja dulu, baru model, baru view, baru migration, baru middleware, baru routes, baru services, baru seeders. 
+Jadi urutannya benar-benar step by step sesuai kebutuhan development. 
+Jangan langsung buat semua file kosong sekaligus karena itu bisa membingungkan dan tidak efisien.
+terus saya sudah ada beberapa file controller dan migration, jadi kita bisa mulai dari situ untuk memastikan struktur dan logika sudah benar sebelum lanjut ke bagian lain.
+masih ingat controller yang sebelumnya
+
+gak usah sampe ke providers dan gituannya konsep mvc aja dulu
+* Batch 1: Struktur folder, migrations, models, seeders (termasuk 4 akun demo)
+* Batch 2: Auth system, middleware, routes
+* Batch 3: Landing page & customer frontend
+* Batch 4: Kasir & Kitchen dashboard
+* Batch 5: Admin panel model belum ada view belum ada controler sedikit
+kasih tau aja total semuanya, controller  ada berapa file pathnya dimana aja, model ada berapa file pathnya dimana aja, view ada berapa file pathnya dimana aja. sebutin semua filenya dan kasih tau simpennya di mana aja . pokoknya buat 1000% mirip sesuai prompt dan seeder migrate yang sudah dibuat, terus checklist aja kalo udah ada yng dibuat kalo belum tampilin aja kasih tanda x, jadi biar tau ada berapa file semuanya
+
+aku juga punya migrations databasenya dan seedernya

@@ -1,0 +1,738 @@
+🗂️ CONTROLLERS (20 file) — ✅ SEMUA SUDAH ADA
+#FilePathStatus1AuthController.phpapp/Http/Controllers/Auth/✅2HomeController.phpapp/Http/Controllers/Customer/✅3MenuController.phpapp/Http/Controllers/Customer/✅4CartController.phpapp/Http/Controllers/Customer/✅5OrderController.phpapp/Http/Controllers/Customer/✅6WalletController.phpapp/Http/Controllers/Customer/✅7ReservationController.phpapp/Http/Controllers/Customer/✅8ProfileController.phpapp/Http/Controllers/Customer/✅9KasirController.phpapp/Http/Controllers/Kasir/✅10KitchenController.phpapp/Http/Controllers/Kitchen/✅11DashboardController.phpapp/Http/Controllers/Admin/✅12MenuAdminController.phpapp/Http/Controllers/Admin/✅13OrderAdminController.phpapp/Http/Controllers/Admin/✅14UserAdminController.phpapp/Http/Controllers/Admin/✅15WalletAdminController.phpapp/Http/Controllers/Admin/✅16BannerAdminController.phpapp/Http/Controllers/Admin/✅17VoucherAdminController.phpapp/Http/Controllers/Admin/✅18ReservationAdminController.phpapp/Http/Controllers/Admin/✅19SettingAdminController.phpapp/Http/Controllers/Admin/✅20NotificationController.phpapp/Http/Controllers/Api/✅
+
+
+🗄️ MODELS (29 file) — ✅ SEMUA SUDAH ADA
+#FileStatus1User.php✅2UserProfile.php✅3LoginHistory.php✅4MenuCategory.php✅5Menu.php✅6MenuImage.php✅7MenuReview.php✅8Favorite.php✅9Cart.php✅10CartItem.php✅11Order.php✅12OrderItem.php✅13OrderStatusLog.php✅14Payment.php✅15Wallet.php✅16WalletTransaction.php✅17TopupRequest.php✅18Membership.php✅19LoyaltyPoint.php✅20LoyaltyPointLog.php✅21CashbackLog.php✅22RestaurantTable.php✅23Reservation.php✅24Banner.php✅25Voucher.php✅26FlashSale.php✅27Notification.php✅28ActivityLog.php✅29Setting.php✅
+
+
+
+
+
+
+Oke, saya sudah audit lengkap. Ini **MASTER CHECKLIST TOTAL** semua file yang dibutuhkan:
+
+---
+
+## 📊 RINGKASAN TOTAL FILE
+
+| Kategori | Total Dibutuhkan | Sudah Ada | Belum Ada |
+|----------|-----------------|-----------|-----------|
+| Controllers | 20 | 20 | 0 |
+| Models | 29 | 29 | 0 |
+| Views | 40 | 7 | 33 |
+| Migrations | 10 | 10 | 0 |
+| Middleware | 8 | 8 | 0 |
+| Routes | 1 | 1 | 0 |
+| Services | 1 | 1 | 0 |
+| Seeders | 1 | 1 | 0 |
+
+---
+
+## 🗂️ CONTROLLERS — 20 FILE ✅ SEMUA SUDAH ADA
+
+| # | File | Path | Status |
+|---|------|------|--------|
+| 1 | AuthController.php | app/Http/Controllers/Auth/ | ✅ |
+| 2 | HomeController.php | app/Http/Controllers/Customer/ | ✅ |
+| 3 | MenuController.php | app/Http/Controllers/Customer/ | ✅ |
+| 4 | CartController.php | app/Http/Controllers/Customer/ | ✅ |
+| 5 | OrderController.php | app/Http/Controllers/Customer/ | ✅ |
+| 6 | WalletController.php | app/Http/Controllers/Customer/ | ✅ |
+| 7 | ReservationController.php | app/Http/Controllers/Customer/ | ✅ |
+| 8 | ProfileController.php | app/Http/Controllers/Customer/ | ✅ |
+| 9 | KasirController.php | app/Http/Controllers/Kasir/ | ✅ |
+| 10 | KitchenController.php | app/Http/Controllers/Kitchen/ | ✅ |
+| 11 | DashboardController.php | app/Http/Controllers/Admin/ | ✅ |
+| 12 | MenuAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 13 | OrderAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 14 | UserAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 15 | WalletAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 16 | BannerAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 17 | VoucherAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 18 | ReservationAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 19 | SettingAdminController.php | app/Http/Controllers/Admin/ | ✅ |
+| 20 | NotificationController.php | app/Http/Controllers/Api/ | ✅ |
+
+---
+
+## 🗄️ MODELS — 29 FILE ✅ SEMUA SUDAH ADA
+
+| # | File | Path | Status |
+|---|------|------|--------|
+| 1 | User.php | app/Models/ | ✅ |
+| 2 | UserProfile.php | app/Models/ | ✅ |
+| 3 | LoginHistory.php | app/Models/ | ✅ |
+| 4 | MenuCategory.php | app/Models/ | ✅ |
+| 5 | Menu.php | app/Models/ | ✅ |
+| 6 | MenuImage.php | app/Models/ | ✅ |
+| 7 | MenuReview.php | app/Models/ | ✅ |
+| 8 | Favorite.php | app/Models/ | ✅ |
+| 9 | Cart.php | app/Models/ | ✅ |
+| 10 | CartItem.php | app/Models/ | ✅ |
+| 11 | Order.php | app/Models/ | ✅ |
+| 12 | OrderItem.php | app/Models/ | ✅ |
+| 13 | OrderStatusLog.php | app/Models/ | ✅ |
+| 14 | Payment.php | app/Models/ | ✅ |
+| 15 | Wallet.php | app/Models/ | ✅ |
+| 16 | WalletTransaction.php | app/Models/ | ✅ |
+| 17 | TopupRequest.php | app/Models/ | ✅ |
+| 18 | Membership.php | app/Models/ | ✅ |
+| 19 | LoyaltyPoint.php | app/Models/ | ✅ |
+| 20 | LoyaltyPointLog.php | app/Models/ | ✅ |
+| 21 | CashbackLog.php | app/Models/ | ✅ |
+| 22 | RestaurantTable.php | app/Models/ | ✅ |
+| 23 | Reservation.php | app/Models/ | ✅ |
+| 24 | Banner.php | app/Models/ | ✅ |
+| 25 | Voucher.php | app/Models/ | ✅ |
+| 26 | FlashSale.php | app/Models/ | ✅ |
+| 27 | Notification.php | app/Models/ | ✅ |
+| 28 | ActivityLog.php | app/Models/ | ✅ |
+| 29 | Setting.php | app/Models/ | ✅ |
+
+---
+
+## 🖼️ VIEWS — 40 FILE (7 ✅ | 33 ❌ BELUM ADA)
+
+### LAYOUTS (2 ✅ | 2 ❌)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 1 | app.blade.php | resources/views/layouts/ | ✅ |
+| 2 | admin.blade.php | resources/views/layouts/ | ✅ |
+| 3 | kasir.blade.php | resources/views/layouts/ | ❌ |
+| 4 | kitchen.blade.php | resources/views/layouts/ | ❌ |
+
+### AUTH (2 ✅)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 5 | login.blade.php | resources/views/auth/ | ✅ |
+| 6 | register.blade.php | resources/views/auth/ | ✅ |
+
+### COMPONENTS (1 ✅)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 7 | menu-card.blade.php | resources/views/components/ | ✅ |
+
+### CUSTOMER (2 ✅ | 13 ❌)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 8 | home.blade.php | resources/views/customer/ | ✅ |
+| 9 | menu/index.blade.php | resources/views/customer/menu/ | ✅ |
+| 10 | menu/show.blade.php | resources/views/customer/menu/ | ❌ |
+| 11 | menu/favorites.blade.php | resources/views/customer/menu/ | ❌ |
+| 12 | cart/index.blade.php | resources/views/customer/cart/ | ❌ |
+| 13 | order/checkout.blade.php | resources/views/customer/order/ | ❌ |
+| 14 | order/index.blade.php | resources/views/customer/order/ | ❌ |
+| 15 | order/show.blade.php | resources/views/customer/order/ | ❌ |
+| 16 | wallet/index.blade.php | resources/views/customer/wallet/ | ❌ |
+| 17 | wallet/transactions.blade.php | resources/views/customer/wallet/ | ❌ |
+| 18 | reservation/index.blade.php | resources/views/customer/reservation/ | ❌ |
+| 19 | reservation/create.blade.php | resources/views/customer/reservation/ | ❌ |
+| 20 | reservation/show.blade.php | resources/views/customer/reservation/ | ❌ |
+| 21 | profile/index.blade.php | resources/views/customer/profile/ | ❌ |
+| 22 | notifications/index.blade.php | resources/views/customer/notifications/ | ❌ |
+
+### KASIR (3 ❌)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 23 | dashboard.blade.php | resources/views/kasir/ | ❌ |
+| 24 | orders.blade.php | resources/views/kasir/ | ❌ |
+| 25 | order-detail.blade.php | resources/views/kasir/ | ❌ |
+
+### KITCHEN (1 ❌)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 26 | dashboard.blade.php | resources/views/kitchen/ | ❌ |
+
+### ADMIN (14 ❌)
+| # | File | Path | Status |
+|---|------|------|--------|
+| 27 | dashboard.blade.php | resources/views/admin/ | ❌ |
+| 28 | analytics.blade.php | resources/views/admin/ | ❌ |
+| 29 | menus/index.blade.php | resources/views/admin/menus/ | ❌ |
+| 30 | menus/create.blade.php | resources/views/admin/menus/ | ❌ |
+| 31 | menus/edit.blade.php | resources/views/admin/menus/ | ❌ |
+| 32 | orders/index.blade.php | resources/views/admin/orders/ | ❌ |
+| 33 | orders/show.blade.php | resources/views/admin/orders/ | ❌ |
+| 34 | users/index.blade.php | resources/views/admin/users/ | ❌ |
+| 35 | users/show.blade.php | resources/views/admin/users/ | ❌ |
+| 36 | wallet/topups.blade.php | resources/views/admin/wallet/ | ❌ |
+| 37 | wallet/transactions.blade.php | resources/views/admin/wallet/ | ❌ |
+| 38 | banners/index.blade.php | resources/views/admin/banners/ | ❌ |
+| 39 | vouchers/index.blade.php | resources/views/admin/vouchers/ | ❌ |
+| 40 | reservations/index.blade.php | resources/views/admin/reservations/ | ❌ |
+| 41 | settings/index.blade.php | resources/views/admin/settings/ | ❌ |
+
+---
+
+buat dari controllernya aja dulu, baru model, baru view, baru migration, baru middleware, baru routes, baru services, baru seeders. 
+Jadi urutannya benar-benar step by step sesuai kebutuhan development. 
+Jangan langsung buat semua file kosong sekaligus karena itu bisa membingungkan dan tidak efisien.
+terus saya sudah ada beberapa file controller dan migration, jadi kita bisa mulai dari situ untuk memastikan struktur dan logika sudah benar sebelum lanjut ke bagian lain.
+masih ingat controller yang sebelumnya
+
+gak usah sampe ke providers dan gituannya konsep mvc aja dulu
+* Batch 1: Struktur folder, migrations, models, seeders (termasuk 4 akun demo)
+* Batch 2: Auth system, middleware, routes
+* Batch 3: Landing page & customer frontend
+* Batch 4: Kasir & Kitchen dashboard
+* Batch 5: Admin panel model belum ada view belum ada controler sedikit
+kasih tau aja total semuanya, controller  ada berapa file pathnya dimana aja, model ada berapa file pathnya dimana aja, view ada berapa file pathnya dimana aja. sebutin semua filenya dan kasih tau simpennya di mana aja . pokoknya buat 1000% mirip sesuai prompt dan seeder migrate yang sudah dibuat, terus checklist aja kalo udah ada yng dibuat kalo belum tampilin aja kasih tanda x, jadi biar tau ada berapa file semuanya
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= [
+    [
+      "migrations" => [
+        "id",
+        "migration",
+        "batch",
+      ],
+    ],
+    [
+      "user_profiles" => [
+        "id",
+        "user_id",
+        "display_name",
+        "birthdate",
+        "gender",
+        "address",
+        "city",
+        "profile_completion",
+        "preferences",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "password_resets" => [
+        "email",
+        "token",
+        "created_at",
+      ],
+    ],
+    [
+      "failed_jobs" => [
+        "id",
+        "uuid",
+        "connection",
+        "queue",
+        "payload",
+        "exception",
+        "failed_at",
+      ],
+    ],
+    [
+      "personal_access_tokens" => [
+        "id",
+        "tokenable_type",
+        "tokenable_id",
+        "name",
+        "token",
+        "abilities",
+        "last_used_at",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "login_histories" => [
+        "id",
+        "user_id",
+        "ip_address",
+        "user_agent",
+        "device",
+        "location",
+        "success",
+        "logged_at",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "users" => [
+        "id",
+        "name",
+        "email",
+        "phone",
+        "email_verified_at",
+        "password",
+        "role",
+        "status",
+        "avatar",
+        "bio",
+        "dark_mode",
+        "last_login_at",
+        "remember_token",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "menu_categories" => [
+        "id",
+        "name",
+        "slug",
+        "description",
+        "icon",
+        "image",
+        "sort_order",
+        "is_active",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "wallets" => [
+        "id",
+        "user_id",
+        "balance",
+        "total_topup",
+        "total_spent",
+        "is_active",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "menus" => [
+        "id",
+        "category_id",
+        "name",
+        "slug",
+        "description",
+        "price",
+        "discount_price",
+        "image",
+        "stock",
+        "is_available",
+        "is_best_seller",
+        "is_featured",
+        "rating",
+        "review_count",
+        "order_count",
+        "calories",
+        "preparation_time",
+        "tags",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "wallet_transactions" => [
+        "id",
+        "wallet_id",
+        "user_id",
+        "transaction_code",
+        "type",
+        "amount",
+        "balance_before",
+        "balance_after",
+        "description",
+        "reference_id",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "topup_requests" => [
+        "id",
+        "user_id",
+        "wallet_id",
+        "transaction_code",
+        "amount",
+        "payment_method",
+        "proof_image",
+        "status",
+        "admin_note",
+        "approved_by",
+        "approved_at",
+        "expires_at",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "carts" => [
+        "id",
+        "user_id",
+        "session_id",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "cart_items" => [
+        "id",
+        "cart_id",
+        "menu_id",
+        "quantity",
+        "note",
+        "price",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "orders" => [
+        "id",
+        "user_id",
+        "order_number",
+        "status",
+        "order_type",
+        "subtotal",
+        "discount_amount",
+        "tax_amount",
+        "total_amount",
+        "payment_method",
+        "payment_status",
+        "voucher_code",
+        "notes",
+        "table_number",
+        "estimated_time",
+        "completed_at",
+        "loyalty_points_earned",
+        "cashback_earned",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "order_items" => [
+        "id",
+        "order_id",
+        "menu_id",
+        "menu_name",
+        "price",
+        "quantity",
+        "subtotal",
+        "note",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "memberships" => [
+        "id",
+        "user_id",
+        "tier",
+        "completed_orders",
+        "cashback_rate",
+        "is_active",
+        "tier_achieved_at",
+        "platinum_expires_at",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "order_status_logs" => [
+        "id",
+        "order_id",
+        "user_id",
+        "status",
+        "note",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "loyalty_points" => [
+        "id",
+        "user_id",
+        "total_points",
+        "used_points",
+        "available_points",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "menu_images" => [
+        "id",
+        "menu_id",
+        "image_path",
+        "is_primary",
+        "sort_order",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "menu_reviews" => [
+        "id",
+        "menu_id",
+        "user_id",
+        "order_id",
+        "rating",
+        "comment",
+        "images",
+        "is_verified",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "favorites" => [
+        "id",
+        "user_id",
+        "menu_id",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "loyalty_point_logs" => [
+        "id",
+        "user_id",
+        "order_id",
+        "points",
+        "type",
+        "description",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "cashback_logs" => [
+        "id",
+        "user_id",
+        "order_id",
+        "amount",
+        "cashback_rate",
+        "membership_tier",
+        "description",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "reservations" => [
+        "id",
+        "user_id",
+        "table_id",
+        "reservation_code",
+        "reservation_date",
+        "reservation_time",
+        "guest_count",
+        "status",
+        "special_request",
+        "event_type",
+        "admin_note",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "restaurant_tables" => [
+        "id",
+        "table_number",
+        "capacity",
+        "status",
+        "location",
+        "is_active",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "banners" => [
+        "id",
+        "title",
+        "image",
+        "link",
+        "description",
+        "is_active",
+        "sort_order",
+        "start_at",
+        "end_at",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "vouchers" => [
+        "id",
+        "code",
+        "name",
+        "description",
+        "type",
+        "value",
+        "min_order",
+        "max_discount",
+        "max_usage",
+        "used_count",
+        "is_active",
+        "start_at",
+        "end_at",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+      ],
+    ],
+    [
+      "flash_sales" => [
+        "id",
+        "title",
+        "menu_id",
+        "flash_price",
+        "quota",
+        "sold_count",
+        "is_active",
+        "start_at",
+        "end_at",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "notifications" => [
+        "id",
+        "user_id",
+        "title",
+        "message",
+        "type",
+        "icon",
+        "action_url",
+        "is_read",
+        "is_broadcast",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "activity_logs" => [
+        "id",
+        "user_id",
+        "action",
+        "model_type",
+        "model_id",
+        "old_values",
+        "new_values",
+        "ip_address",
+        "user_agent",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "settings" => [
+        "id",
+        "key",
+        "value",
+        "type",
+        "group",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+    [
+      "payments" => [
+        "id",
+        "order_id",
+        "user_id",
+        "payment_code",
+        "amount",
+        "method",
+        "status",
+        "metadata",
+        "paid_at",
+        "created_at",
+        "updated_at",
+      ],
+    ],
+  ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ sekarang file file yang sudah dibuat apa saja? controller auth,customer,kasir sudah tinggal sisanya.  
+ terus controller dan view sisa berapa yang belum dan ceklis jika ada file yang sudah dibuat, 
+ dan lanjut lagi sampai projeknya beres 100% dan seperti prompt 100% harus sama.
+ fyi PENTING: 'jangan pake match() soalnya aku pake php 7.4' jadi pake switch mungkin. 
+ pokoknya rekap dulu apa aja yang udah di ceklis terus lanjut buat lagi sisanya gapap bertahap yang penting 100% sama kayak prompt
+
+kalau ada hal yang berbau admin boleh diakhir soalnya admin bakal kompleks dan spesial pastinya harus sesuai prompt kan 100% no error no mistake

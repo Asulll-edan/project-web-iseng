@@ -1,0 +1,321 @@
+Buatkan web e-commerce lengkap berbasis PHP native versi 7.4.6 (tanpa fungsi match(), tanpa fitur PHP 8+). Web ini mirip Shopee dengan fitur lengkap untuk user dan admin. Gunakan MySQL untuk database, CSS dan JavaScript vanilla (boleh pakai jQuery). Buat struktur folder yang rapi dan kode yang bersih.
+
+
+
+===== KETENTUAN TEKNIS =====
+
+- PHP 7.4.6 native (tanpa framework)
+
+- Tidak menggunakan match() expression (gunakan switch/if-else)
+
+- MySQL + PDO untuk koneksi database
+
+- Session-based authentication
+
+- Folder: /config, /includes, /admin, /user, /assets, /uploads
+
+- Semua query menggunakan prepared statement (anti SQL injection)
+
+- Password di-hash dengan password_hash() dan diverifikasi dengan password_verify()
+
+- Upload file dengan validasi tipe dan ukuran
+
+
+
+===== FITUR HALAMAN USER =====
+
+
+
+1. LANDING PAGE
+
+   - Hero banner slider (bisa diatur admin)
+
+   - Iklan / banner promosi yang bisa dikelola admin (posisi: top banner, sidebar, pop-up)
+
+   - Kategori produk dengan ikon
+
+   - Produk flash sale dengan countdown timer
+
+   - Produk terlaris & produk terbaru
+
+   - Rekomendasi produk berdasarkan riwayat lihat
+
+   - Footer dengan info toko, link, dan sosial media
+
+
+
+2. AUTENTIKASI USER
+
+   - Register (nama, email, no HP, password, foto profil opsional)
+
+   - Login dengan email/no HP dan password
+
+   - Lupa password (kirim link reset via email / kode OTP)
+
+   - Verifikasi email setelah register
+
+   - Logout dengan hapus session
+
+
+
+3. HALAMAN PRODUK
+
+   - Listing produk dengan filter: kategori, harga, rating, kondisi (baru/bekas), lokasi
+
+   - Sorting: terpopuler, terbaru, harga terendah/tertinggi, rating tertinggi
+
+   - Pencarian produk real-time (AJAX)
+
+   - Halaman detail produk: foto multiple (gallery), deskripsi, varian (ukuran/warna/dll), stok, rating & ulasan, info penjual
+
+
+
+4. KERANJANG & CHECKOUT
+
+   - Tambah ke keranjang (dengan pilih varian)
+
+   - Update jumlah, hapus item dari keranjang
+
+   - Pilih semua / per toko
+
+   - Hitung total otomatis
+
+   - Checkout: pilih alamat, pilih kurir (JNE/J&T/dll), pilih metode pembayaran
+
+   - Kode voucher / diskon
+
+   - Ringkasan pesanan sebelum bayar
+
+
+
+5. PEMBAYARAN
+
+   - Transfer bank (BCA, Mandiri, BRI, BNI)
+
+   - Dompet digital (simulasi: GoPay, OVO, Dana)
+
+   - Bayar di tempat / COD
+
+   - Upload bukti pembayaran
+
+   - Status pembayaran: menunggu, terkonfirmasi, ditolak
+
+
+
+6. PESANAN & TRANSAKSI
+
+   - Daftar pesanan dengan filter status
+
+   - Detail pesanan: produk, total, kurir, no resi
+
+   - Konfirmasi penerimaan barang oleh user
+
+   - Beri ulasan dan rating setelah pesanan selesai
+
+   - Ajukan komplain / pengembalian barang
+
+
+
+7. PROFIL USER
+
+   - Edit profil (nama, foto, no HP, email)
+
+   - Kelola buku alamat (tambah, edit, hapus, set utama)
+
+   - Wishlist / produk yang disimpan
+
+   - Riwayat transaksi
+
+   - Notifikasi (pesanan diproses, dikirim, tiba, dll)
+
+   - Poin / reward dari transaksi (opsional)
+
+
+
+8. TOKO / PENJUAL (fitur seller)
+
+   - Setiap user bisa buka toko
+
+   - Halaman profil toko dengan rating dan ulasan
+
+   - Kelola produk: tambah, edit, hapus, set stok
+
+   - Dashboard penjual: pesanan masuk, pendapatan, statistik
+
+   - Chat dengan pembeli (simulasi atau ajax simple)
+
+
+
+===== FITUR ADMIN PANEL =====
+
+
+
+Buat halaman admin di /admin/ dengan login terpisah (superadmin, admin biasa).
+
+
+
+1. DASHBOARD ADMIN
+
+   - Statistik: total user, total produk, total transaksi, pendapatan hari ini
+
+   - Grafik penjualan (Chart.js)
+
+   - Transaksi terbaru
+
+   - Produk stok menipis
+
+
+
+2. MANAJEMEN IKLAN & BANNER
+
+   - Tambah iklan/banner: upload gambar, set URL tujuan, set posisi (hero slider, top banner, pop-up, sidebar kiri, sidebar kanan, bawah halaman)
+
+   - Atur jadwal tayang iklan (tanggal mulai & selesai)
+
+   - Aktifkan / nonaktifkan iklan
+
+   - Urutan tampil iklan (drag & drop atau input angka)
+
+   - Preview iklan sebelum tayang
+
+   - Statistik klik iklan
+
+
+
+3. MANAJEMEN PRODUK
+
+   - Lihat semua produk dari semua seller
+
+   - Setujui / tolak / suspend produk
+
+   - Tandai produk sebagai unggulan / flash sale
+
+   - Atur harga flash sale dan durasi
+
+   - Kategori produk: tambah, edit, hapus, ikon kategori
+
+
+
+4. MANAJEMEN USER & SELLER
+
+   - Lihat semua user
+
+   - Aktifkan / suspend / hapus akun
+
+   - Verifikasi seller
+
+   - Reset password user
+
+   - Detail aktivitas user
+
+
+
+5. MANAJEMEN TRANSAKSI
+
+   - Lihat semua transaksi
+
+   - Filter berdasarkan status, tanggal, metode bayar
+
+   - Konfirmasi pembayaran (jika transfer manual)
+
+   - Proses refund
+
+   - Export transaksi ke CSV/Excel
+
+
+
+6. MANAJEMEN VOUCHER & PROMO
+
+   - Buat voucher: kode, tipe diskon (persen/nominal), min belanja, max diskon, kuota, masa berlaku
+
+   - Flash sale: set produk, harga diskon, durasi
+
+   - Gratis ongkir (syarat dan ketentuan)
+
+
+
+7. PENGATURAN TOKO
+
+   - Nama toko, logo, deskripsi, alamat, kontak
+
+   - Ongkos kirim (flat atau per wilayah)
+
+   - Metode pembayaran yang aktif
+
+   - Konfigurasi email (SMTP)
+
+   - Maintenance mode on/off
+
+   - Kebijakan privasi, syarat & ketentuan (editor teks)
+
+
+
+8. LAPORAN & ANALITIK
+
+   - Laporan penjualan harian, mingguan, bulanan
+
+   - Produk terlaris
+
+   - User paling aktif
+
+   - Sumber trafik (opsional)
+
+   - Export laporan ke PDF / CSV
+
+
+
+===== DESAIN UI =====
+
+- Warna tema: biru langit sebagai warna utama (mirip gopay), putih & ijo netral
+
+- Responsive mobile-first (tampil bagus di HP dan desktop)
+
+- Gunakan Font Awesome untuk ikon
+
+- Loading spinner saat proses AJAX
+
+- Toast notification (sukses, error, info)
+
+- Konfirmasi sebelum hapus / aksi penting
+
+- Breadcrumb navigasi
+
+- Pagination di semua list
+
+
+
+===== KEAMANAN =====
+
+- Semua input di-sanitasi dengan htmlspecialchars()
+
+- CSRF token di setiap form
+
+- Rate limiting login (blokir setelah 5x gagal)
+
+- Session regenerate setelah login
+
+- Folder uploads tidak bisa diakses langsung (gunakan .htaccess)
+
+- Admin dan user route terpisah
+
+
+
+===== OUTPUT YANG DIINGINKAN =====
+
+Buatkan struktur folder lengkap, file config database, file SQL untuk membuat semua tabel, dan semua file PHP untuk setiap halaman dan fitur di atas. Mulai dari:
+
+1. config/database.php
+
+2. File SQL (database.sql) berisi semua CREATE TABLE
+
+3. index.php (landing page)
+
+4. Halaman auth (register, login, lupa password)
+
+5. Admin panel lengkap
+
+6. Dan seterusnya
+
+
+
+Beri komentar pada kode agar mudah dipahami. Gunakan include/require untuk komponen yang berulang (header, footer, navbar).
