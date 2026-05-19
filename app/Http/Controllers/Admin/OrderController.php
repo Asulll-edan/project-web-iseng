@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function __construct(private NotificationService $notif) {}
-
+private $notif;
+public function __construct(NotificationService $notif)
+{
+    $this->notif=$notif;
+}
     public function index(Request $request)
     {
         $query = Order::with(['user','items'])->latest();

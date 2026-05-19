@@ -12,10 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class WalletController extends Controller
 {
-    public function __construct(
-        private WalletService $walletService,
-        private NotificationService $notif
-    ) {}
+   private $walletService;
+private $notif;
+
+public function __construct(WalletService $walletService, NotificationService $notif)
+{
+    $this->walletService = $walletService;
+    $this->notif = $notif;
+}
 
     public function index()
     {

@@ -15,10 +15,14 @@ use App\Models\User;
 use App\Services\WalletService;
 class OrderService
 {
-    public function __construct(
-        private WalletService $walletService,
-        private NotificationService $notificationService
-    ) {}
+    private $walletService;
+    private $notificationService;
+    public function __construct(WalletService $walletService, 
+    NotificationService $notificationService) {
+$this->walletService=$walletService;
+$this->notificationService=$notificationService;
+
+    }
 
     public function createFromCart(User $user, array $data): Order
     {

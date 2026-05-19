@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class KitchenController extends Controller
 {
-    public function __construct(private NotificationService $notif) {}
+private $notif;
 
+public function __construct(NotificationService $notif)
+{
+    $this->notif=$notif;
+}
     public function display()
     {
         return view('kitchen.display');

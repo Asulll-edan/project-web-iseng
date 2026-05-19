@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function __construct(private CartService $cartService) {}
-
+private $cartService;
+public function __construct(CartService $cartService)
+{
+    $this->cartService=$cartService;
+}
     public function index()
     {
         $cart = $this->cartService->getCartWithItems(Auth::user());

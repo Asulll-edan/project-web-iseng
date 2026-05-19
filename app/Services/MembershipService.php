@@ -15,8 +15,11 @@ use App\Services\WalletService;
 
 class MembershipService
 {
-    public function __construct(private WalletService $walletService) {}
+private $walletService;
 
+public function __construct(WalletService $walletService){
+    $this->walletService=$walletService;
+}
     /**
      * Called when an order is marked as completed by customer.
      */

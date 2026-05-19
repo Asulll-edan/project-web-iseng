@@ -43,5 +43,8 @@ class Kernel extends HttpKernel
         'throttle'     => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified'     => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role'         => \App\Http\Middleware\RoleMiddleware::class,
+        'check.banned' => \App\Http\Middleware\CheckBanned::class,
+'log.activity' => \App\Http\Middleware\LogActivity::class,
+'check.wallet' => \App\Http\Middleware\CheckWallet::class,
     ];
 }

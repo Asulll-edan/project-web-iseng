@@ -14,11 +14,20 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function __construct(
-        private OrderService $orderService,
-        private CartService $cartService,
-        private MembershipService $membershipService
-    ) {}
+
+   private $orderService;
+private $cartService;
+private $membershipService;
+
+public function __construct(
+    OrderService $orderService,
+    CartService $cartService,
+    MembershipService $membershipService
+) {
+    $this->orderService = $orderService;
+    $this->cartService = $cartService;
+    $this->membershipService = $membershipService;
+}
 
     public function checkout()
     {

@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 
 class ChatbotController extends Controller
 {
-    public function __construct(private ChatbotService $chatbot) {}
+    // public function __construct(private ChatbotService $chatbot) {}
+    private $chatbot;
+
+public function __construct(ChatbotService $chatbot)
+{
+    $this->chatbot=$chatbot;
+}
 
     public function respond(Request $request)
     {

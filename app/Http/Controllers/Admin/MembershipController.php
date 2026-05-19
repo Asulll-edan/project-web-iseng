@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 
 class MembershipController extends Controller
 {
-    public function __construct(private NotificationService $notif) {}
+    private $notif;
+
+public function __construct(NotificationService $notif)
+{
+    $this->notif = $notif;
+}
 
     public function index(Request $request)
     {
