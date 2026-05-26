@@ -118,10 +118,9 @@
 
 @push('scripts')
 <script>
-function approvePlatinum(id, name) {
-    if(!confirm('Approve Platinum Membership untuk "'+name+'"?')) return;
+function approvePlatinum(id,name){confirmAction('Approve Platinum?','Membership Platinum untuk "'+name+'" akan diaktifkan.',()=>{
     ajax('/admin/membership/'+id+'/approve-platinum','POST')
     .then(d => { showToast(d.message,'success'); setTimeout(()=>location.reload(),700); });
-}
+});}
 </script>
 @endpush

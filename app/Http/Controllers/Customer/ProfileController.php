@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\LoginHistory;
+use App\Models\User;
+    
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        $user         = User::with(['profile', 'wallet', 'membership', 'loyaltyPoint'])->find(Auth::id());
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        
+        $user->load(['profile', 'wallet', 'membership', 'loyaltyPoint']);
         $orderStats   = [
             'total'     => $user->orders()->count(),
             'completed' => $user->orders()->where('status', 'completed')->count(),
@@ -26,11 +31,13 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $user = User::find(Auth::id());
+        /** @var \App\Models\User $user */
+
+        $user = Auth::user();
 
         $request->validate([
             'name'         => 'required|string|max:100',
-            'phone'        => 'required|string|max:20',
+            'phone'        => 'nullable|string|max:20',
             'bio'          => 'nullable|string|max:300',
             'display_name' => 'nullable|string|max:100',
             'birthdate'    => 'nullable|date|before:today',
@@ -39,20 +46,44 @@ class ProfileController extends Controller
             'city'         => 'nullable|string|max:100',
         ]);
 
-        User::where('id', Auth::id())->update($request->only('name', 'phone', 'bio'));
+        // --- Cek apakah ada perubahan ---
+        $userChanged = (
+            $request->name         !== $user->name ||
+            $request->phone        !== $user->phone ||
+            $request->bio          !== $user->bio
+        );
 
-        $completion = 40;
-        if ($request->filled('bio'))          $completion += 10;
-        if ($request->filled('birthdate'))    $completion += 10;
-        if ($request->filled('address'))      $completion += 10;
-        if ($user->avatar)                    $completion += 15;
-        if ($request->filled('display_name')) $completion += 15;
-        $completion = min(100, $completion);
+        $profile = $user->profile;
+        $profileChanged = (
+            $request->display_name !== ($profile->display_name ?? '') ||
+            $request->birthdate    !== (optional($profile->birthdate)->format('Y-m-d') ?? '') ||
+            $request->gender       !== ($profile->gender ?? '') ||
+            $request->address      !== ($profile->address ?? '') ||
+            $request->city         !== ($profile->city ?? '')
+        );
 
-        $user->profile()->updateOrCreate(['user_id' => $user->id], array_merge(
-            $request->only('display_name', 'birthdate', 'gender', 'address', 'city'),
-            ['profile_completion' => $completion]
-        ));
+        if (!$userChanged && !$profileChanged) {
+            return back()->with('info', 'Tidak ada perubahan yang perlu disimpan.');
+        }
+
+        if ($userChanged) {
+            $user->update($request->only('name', 'phone', 'bio'));
+        }
+
+        if ($profileChanged) {
+            $completion = 40;
+            if ($request->filled('bio'))          $completion += 10;
+            if ($request->filled('birthdate'))    $completion += 10;
+            if ($request->filled('address'))      $completion += 10;
+            if ($user->avatar)                    $completion += 15;
+            if ($request->filled('display_name')) $completion += 15;
+            $completion = min(100, $completion);
+
+            $user->profile()->updateOrCreate(['user_id' => $user->id], array_merge(
+                $request->only('display_name', 'birthdate', 'gender', 'address', 'city'),
+                ['profile_completion' => $completion]
+            ));
+        }
 
         return back()->with('success', 'Profil berhasil diperbarui! 👤');
     }
@@ -61,17 +92,16 @@ class ProfileController extends Controller
     {
         $request->validate(['avatar' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048']);
 
-        $user = User::find(Auth::id());
+        /** @var \App\Models\User $user */
+
+        $user = Auth::user();
 
         if ($user->avatar) {
             Storage::disk('public')->delete($user->avatar);
         }
 
         $path = $request->file('avatar')->store('avatars', 'public');
-        User::where('id', Auth::id())->update(['avatar' => $path]);
-
-        // Refresh user untuk ambil avatar terbaru
-        $user = User::find(Auth::id());
+        $user->update(['avatar' => $path]);
 
         return response()->json(['success' => true, 'avatar_url' => $user->avatar_url]);
     }
@@ -80,28 +110,51 @@ class ProfileController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'password'         => 'required|min:8|confirmed',
+            'password'         => 'required|min:8|confirmed|different:current_password',
         ]);
+/** @var \App\Models\User $user */
 
-        $user = User::find(Auth::id());
+        $user = Auth::user();
 
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'Password lama tidak sesuai.']);
         }
 
-        User::where('id', Auth::id())->update(['password' => Hash::make($request->password)]);
+        $user->update(['password' => Hash::make($request->password)]);
 
         return back()->with('success', 'Password berhasil diperbarui! 🔒');
     }
 
     public function toggleDarkMode(Request $request)
     {
-        $user = User::find(Auth::id());
-        User::where('id', Auth::id())->update(['dark_mode' => !$user->dark_mode]);
-
-        // Refresh untuk ambil nilai terbaru
-        $user = User::find(Auth::id());
-
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        $user->update(['dark_mode' => !$user->dark_mode]);
         return response()->json(['dark_mode' => $user->dark_mode]);
+    }
+
+    public function updateSecurity(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'action'           => 'required|in:logout_all_devices',
+        ]);
+
+        /** @var \App\Models\User $user */
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['success' => false, 'message' => 'Password tidak sesuai.']);
+        }
+
+        if ($request->action === 'logout_all_devices') {
+            // Regenerate remember token → invalidate all sessions
+            $user->update(['remember_token' => \Illuminate\Support\Str::random(60)]);
+            Auth::logout();
+            return response()->json(['success' => true, 'message' => 'Semua sesi berhasil diakhiri. Silakan login kembali.', 'redirect' => route('login')]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Aksi tidak dikenali.']);
     }
 }

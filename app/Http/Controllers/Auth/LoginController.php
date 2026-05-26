@@ -29,6 +29,7 @@ class LoginController extends Controller
         $remember    = $request->boolean('remember');
 
         if (Auth::attempt($credentials, $remember)) {
+            /** @var \App\Models\User $user */
             $user = Auth::user();
 
             if ($user->status === 'suspended') {
@@ -46,9 +47,7 @@ class LoginController extends Controller
                 'logged_at'  => now(),
             ]);
 
-            // Fix: pakai query langsung, bukan instance method
-            User::where('id', $user->id)->update(['last_login_at' => now()]);
-
+            $user->update(['last_login_at' => now()]);
             $request->session()->regenerate();
 
             return $this->redirectByRole($user);
@@ -73,6 +72,8 @@ class LoginController extends Controller
     {
         switch ($user->role) {
             case 'superadmin':
+            case 'admin':
+            case 'manager':
                 return redirect()->route('admin.dashboard');
             case 'kasir':
                 return redirect()->route('kasir.dashboard');
@@ -85,8 +86,8 @@ class LoginController extends Controller
 
     private function detectDevice(string $ua): string
     {
-        if (strpos($ua, 'Mobile') !== false) return 'Mobile';
-        if (strpos($ua, 'Tablet') !== false) return 'Tablet';
+        if (str_contains($ua, 'Mobile')) return 'Mobile';
+        if (str_contains($ua, 'Tablet')) return 'Tablet';
         return 'Desktop';
     }
 }

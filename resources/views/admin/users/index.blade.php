@@ -149,11 +149,12 @@ function applyFilter() {
     window.location = url;
 }
 function suspendUser(id, name, btn) {
-    if(!confirm('Suspend user "'+name+'"? Mereka tidak bisa login.')) return;
-    btn.disabled = true;
-    ajax('/admin/users/'+id+'/suspend','POST')
-    .then(d => { showToast(d.message,'info'); setTimeout(()=>location.reload(),600); })
-    .catch(()=>btn.disabled=false);
+    confirmDanger('Suspend User?','"'+name+'" tidak bisa login setelah di-suspend.',()=>{
+        btn.disabled=true;
+        ajax('/admin/users/'+id+'/suspend','POST')
+        .then(d=>{showToast(d.message,'info');setTimeout(()=>location.reload(),600);})
+        .catch(()=>btn.disabled=false);
+    },'Ya, Suspend');
 }
 function activateUser(id, btn) {
     btn.disabled = true;

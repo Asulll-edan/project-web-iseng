@@ -14,20 +14,16 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-
-   private $orderService;
-private $cartService;
-private $membershipService;
-
-public function __construct(
-    OrderService $orderService,
-    CartService $cartService,
-    MembershipService $membershipService
-) {
-    $this->orderService = $orderService;
-    $this->cartService = $cartService;
-    $this->membershipService = $membershipService;
-}
+  
+ private $orderService;
+        private $cartService;
+        private $membershipService;
+    public function __construct(OrderService $orderService, CartService $cartService, MembershipService $membershipService)
+    {
+        $this->orderService = $orderService;
+        $this->cartService = $cartService;
+        $this->membershipService = $membershipService;
+    }
 
     public function checkout()
     {
@@ -46,7 +42,7 @@ public function __construct(
     public function store(Request $request)
     {
         $request->validate([
-            'payment_method' => 'required|in:wallet,cash,transfer',
+            'payment_method' => 'required|in:wallet,cash,transfer,qris',
             'order_type'     => 'required|in:dine_in,takeaway',
             'table_number'   => 'nullable|string',
             'notes'          => 'nullable|string|max:500',
@@ -54,9 +50,21 @@ public function __construct(
         ]);
 
         try {
-            $order = $this->orderService->createFromCart(Auth::user(), $request->only(
-                'payment_method', 'order_type', 'table_number', 'notes', 'voucher_code'
-            ));
+            $data = $request->only('payment_method','order_type','table_number','notes','voucher_code');
+
+            // Handle selected items from cart
+            if ($request->filled('selected_items')) {
+                $data['selected_items'] = array_filter(explode(',', $request->selected_items));
+            }
+
+            $order = $this->orderService->createFromCart(Auth::user(), $data);
+
+            // Redirect ke instruksi pembayaran untuk transfer & qris
+            if (in_array($order->payment_method, ['transfer','qris'])) {
+                $bank = $request->get('bank_code','');
+                return redirect()->route('orders.payment-instruction', $order->id)
+                    ->with('success', "Order #{$order->order_number} dibuat! Selesaikan pembayaran.");
+            }
 
             return redirect()->route('orders.show', $order->id)
                 ->with('success', "Order #{$order->order_number} berhasil dibuat! 🎉");
@@ -136,6 +144,14 @@ public function __construct(
             'discount' => $discount,
             'voucher'  => $voucher->only('code', 'name', 'type', 'value'),
         ]);
+    }
+
+    public function paymentInstruction(int $id)
+    {
+        $order = Order::where('user_id', Auth::id())
+            ->with(['items.menu','payment'])
+            ->findOrFail($id);
+        return view('customer.order.payment-instruction', compact('order'));
     }
 
     public function statusPoll(int $id)

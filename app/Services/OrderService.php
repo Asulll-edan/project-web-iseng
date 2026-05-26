@@ -12,36 +12,45 @@ use App\Models\Menu;
 use App\Models\Setting;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Services\WalletService;
+
 class OrderService
 {
+    // public function __construct(
+    //     private WalletService $walletService,
+    //     private NotificationService $notificationService
+    // ) {}
+
     private $walletService;
     private $notificationService;
-    public function __construct(WalletService $walletService, 
-    NotificationService $notificationService) {
-$this->walletService=$walletService;
-$this->notificationService=$notificationService;
 
+    public function __construct(walletService $walletService, notificationService $notificationService){
+        $this->walletService=$walletService;
+        $this->notificationService=$notificationService;
     }
-
     public function createFromCart(User $user, array $data): Order
     {
         return DB::transaction(function () use ($user, $data) {
             $cart = Cart::where('user_id', $user->id)->with('items.menu')->firstOrFail();
 
-            if ($cart->items->isEmpty()) {
-                throw new \Exception('Keranjang belanja kosong.');
+            // Filter selected items if provided
+            $selectedIds = !empty($data['selected_items']) ? array_map('intval', $data['selected_items']) : null;
+            $items = $selectedIds
+                ? $cart->items->whereIn('id', $selectedIds)->values()
+                : $cart->items;
+
+            if ($items->isEmpty()) {
+                throw new \Exception('Tidak ada item yang dipilih.');
             }
 
             // Validate stock
-            foreach ($cart->items as $item) {
+            foreach ($items as $item) {
                 if ($item->menu->stock < $item->quantity) {
                     throw new \Exception("Stok {$item->menu->name} tidak mencukupi.");
                 }
             }
 
             $taxRate    = (float) Setting::get('tax_rate', 10);
-            $subtotal   = $cart->total;
+            $subtotal   = $items->sum(fn($i) => $i->price * $i->quantity);
             $discount   = 0;
             $voucherCode= null;
 
@@ -81,7 +90,7 @@ $this->notificationService=$notificationService;
             ]);
 
             // Create order items & deduct stock
-            foreach ($cart->items as $item) {
+            foreach ($items as $item) {
                 OrderItem::create([
                     'order_id'  => $order->id,
                     'menu_id'   => $item->menu_id,

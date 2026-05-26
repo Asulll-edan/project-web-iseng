@@ -72,7 +72,7 @@
                 <button onclick="toggleVoucher({{ $voucher->id }},this)" class="btn-icon {{ $voucher->is_active ? 'btn-icon-red' : 'btn-icon-sage' }}" title="{{ $voucher->is_active ? 'Nonaktifkan' : 'Aktifkan' }}">
                     <i class="ti {{ $voucher->is_active ? 'ti-eye-off' : 'ti-eye' }}" style="font-size:14px"></i>
                 </button>
-                <form action="{{ route('admin.vouchers.destroy',$voucher->id) }}" method="POST" onsubmit="return confirm('Hapus voucher ini?')" style="display:inline">
+                <form action="{{ route('admin.vouchers.destroy',$voucher->id) }}" method="POST" onsubmit="return false" onclick="this.closest('form').submit()" style="display:inline">
                     @csrf @method('DELETE')
                     <button type="submit" class="btn-icon btn-icon-red" title="Hapus">
                         <i class="ti ti-trash" style="font-size:14px"></i>

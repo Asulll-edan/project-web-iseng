@@ -13,6 +13,10 @@
 <!-- Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 <!-- AOS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 
@@ -133,6 +137,29 @@ img{max-width:100%}
 
 <script>
 const CSRF = document.querySelector('meta[name="csrf-token"]').content;
+
+// ── SweetAlert helpers ──────────────────────────────────
+function confirmDanger(title, text, cb, btnText='Ya, Lanjutkan') {
+    Swal.fire({
+        title, text, icon:'warning',
+        showCancelButton:true,
+        confirmButtonColor:'#c0392b',
+        cancelButtonColor:'#6b7c72',
+        confirmButtonText: btnText,
+        cancelButtonText:'Batal',
+        borderRadius:'16px',
+    }).then(r=>{ if(r.isConfirmed) cb(); });
+}
+function confirmAction(title, text, cb, btnText='Ya') {
+    Swal.fire({
+        title, text, icon:'question',
+        showCancelButton:true,
+        confirmButtonColor:'#3d5c47',
+        cancelButtonColor:'#6b7c72',
+        confirmButtonText: btnText,
+        cancelButtonText:'Batal',
+    }).then(r=>{ if(r.isConfirmed) cb(); });
+}
 
 // AOS init
 AOS.init({ duration: 700, once: true, offset: 60 });

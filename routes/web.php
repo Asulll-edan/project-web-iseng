@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:customer', 'check.banned'])->group(function () 
         Route::get('/{id}/tracking',     [App\Http\Controllers\Customer\OrderController::class, 'tracking'])->name('tracking');
         Route::post('/{id}/complete',    [App\Http\Controllers\Customer\OrderController::class, 'complete'])->name('complete');
         Route::get('/{id}/status-poll',  [App\Http\Controllers\Customer\OrderController::class, 'statusPoll'])->name('status-poll');
+        Route::get('/{id}/payment',       [App\Http\Controllers\Customer\OrderController::class, 'paymentInstruction'])->name('payment-instruction');
         Route::post('/check-voucher',    [App\Http\Controllers\Customer\OrderController::class, 'checkVoucher'])->name('check-voucher');
     });
 
@@ -110,8 +111,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:superadmin', '
     Route::resource('menus', App\Http\Controllers\Admin\MenuController::class)->except(['show']);
     Route::post('/menus/{id}/toggle',   [App\Http\Controllers\Admin\MenuController::class, 'toggle'])->name('menus.toggle');
     Route::post('/menus/upload-image',  [App\Http\Controllers\Admin\MenuController::class, 'uploadImage'])->name('menus.upload-image');
-
+    
     // Users
+    Route::get('/users/create',             [App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
+    Route::post('/users',                   [App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
     Route::get('/users',                [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
     Route::get('/users/{id}',           [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
     Route::post('/users/{id}/suspend',  [App\Http\Controllers\Admin\UserController::class, 'suspend'])->name('users.suspend');
@@ -159,4 +162,30 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:superadmin', '
 // ── API / Chatbot ─────────────────────────────────────────────────────────────
 Route::prefix('api')->group(function () {
     Route::post('/chatbot', [App\Http\Controllers\Api\ChatbotController::class, 'respond'])->name('chatbot.respond');
+});
+
+// ── New Admin Routes (Revisi) ─────────────────────────────────────────────────
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:superadmin,admin,manager', 'check.banned'])->group(function () {
+
+    // Users — tambah user baru
+
+    // Laporan / Report
+    Route::get('/reports',                  [App\Http\Controllers\Admin\LaporanController::class, 'index'])->name('reports.index');
+    Route::get('/reports/export',           [App\Http\Controllers\Admin\LaporanController::class, 'exportForm'])->name('reports.export');
+    Route::post('/reports/generate',        [App\Http\Controllers\Admin\LaporanController::class, 'generate'])->name('reports.generate');
+    Route::post('/reports/{id}/approve',    [App\Http\Controllers\Admin\LaporanController::class, 'approve'])->name('reports.approve');
+    Route::post('/reports/{id}/reject',     [App\Http\Controllers\Admin\LaporanController::class, 'reject'])->name('reports.reject');
+    Route::get('/reports/{id}/download',    [App\Http\Controllers\Admin\LaporanController::class, 'download'])->name('reports.download');
+
+    // Role Permissions (superadmin & admin only)
+    Route::get('/role-permissions',         [App\Http\Controllers\Admin\RolePermissionController::class, 'index'])->name('role-permissions.index');
+    Route::post('/role-permissions',        [App\Http\Controllers\Admin\RolePermissionController::class, 'update'])->name('role-permissions.update');
+
+    // Payment History
+    Route::get('/payment-history',          [App\Http\Controllers\Admin\PaymentHistoryController::class, 'index'])->name('payment-history.index');
+});
+
+// Profile security route (revision)
+Route::middleware(['auth','role:customer','check.banned'])->group(function(){
+    Route::post('/profile/security', [App\Http\Controllers\Customer\ProfileController::class, 'updateSecurity'])->name('profile.security');
 });

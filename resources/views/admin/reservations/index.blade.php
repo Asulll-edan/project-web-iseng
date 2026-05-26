@@ -93,11 +93,12 @@
 @push('scripts')
 <script>
 function approveRes(id, btn) {
-    if(!confirm('Konfirmasi reservasi ini?')) return;
-    btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader"></i>';
+    confirmAction('Konfirmasi Reservasi?','Reservasi akan dikonfirmasi dan customer dinotifikasi.',()=>{
+    btn.disabled=true;btn.innerHTML='<i class="ti ti-loader"></i>';
     ajax('/admin/reservations/'+id+'/approve','POST')
     .then(d => { showToast(d.message,'success'); setTimeout(()=>location.reload(),700); })
     .catch(()=>btn.disabled=false);
+});
 }
 function rejectRes(id, btn) {
     const note = prompt('Alasan penolakan (opsional):');

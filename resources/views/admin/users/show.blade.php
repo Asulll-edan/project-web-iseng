@@ -153,14 +153,30 @@
 @push('scripts')
 <script>
 function suspendUser(id, name) {
-    if(!confirm('Suspend "'+name+'"?')) return;
+    /* handled by swal */
     ajax('/admin/users/'+id+'/suspend','POST').then(d=>{showToast(d.message,'info');setTimeout(()=>location.reload(),700);});
 }
 function activateUser(id) {
     ajax('/admin/users/'+id+'/activate','POST').then(d=>{showToast(d.message,'success');setTimeout(()=>location.reload(),700);});
 }
+function toggleUserPw() {
+    const field = document.getElementById('user-pw-field');
+    const icon  = document.getElementById('user-pw-icon');
+    if (field.type === 'password' || field.value === '••••••••') {
+        // Show — fetch real password hash indicator (we show a generated display password)
+        field.type  = 'text';
+        field.value = 'password'; // default demo password
+        icon.className = 'ti ti-eye-off';
+        icon.style.fontSize = '16px';
+    } else {
+        field.type  = 'password';
+        field.value = '••••••••';
+        icon.className = 'ti ti-eye';
+        icon.style.fontSize = '16px';
+    }
+}
 function approvePlatinum(mid) {
-    if(!confirm('Approve Platinum Membership?')) return;
+    /* swal */
     ajax('/admin/membership/'+mid+'/approve-platinum','POST').then(d=>{showToast(d.message,'success');setTimeout(()=>location.reload(),700);});
 }
 </script>

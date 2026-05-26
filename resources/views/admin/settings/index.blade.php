@@ -192,10 +192,11 @@ function sendBroadcast() {
     const message = document.getElementById('notif-message').value.trim();
     const type    = document.getElementById('notif-type').value;
     if(!title || !message) { showToast('Isi judul dan pesan dahulu','error'); return; }
-    if(!confirm('Kirim notifikasi ke semua customer?')) return;
+    confirmAction('Kirim Broadcast?','Notifikasi akan dikirim ke semua customer.',()=>{
     ajax('/admin/notifications/broadcast','POST',{title,message,type})
     .then(d => { showToast(d.message,'success'); document.getElementById('notif-title').value=''; document.getElementById('notif-message').value=''; })
     .catch(()=>showToast('Gagal mengirim notifikasi','error'));
+});
 }
 </script>
 @endpush

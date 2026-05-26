@@ -186,10 +186,9 @@
 
 @push('scripts')
 <script>
-function cancelOrder(id) {
-    if(!confirm('Batalkan order ini? Tindakan ini tidak bisa dibatalkan.')) return;
+function cancelOrder(id){confirmDanger('Batalkan Order?','Tindakan ini tidak bisa dibatalkan.',()=>{
     ajax('/admin/orders/'+id+'/cancel','POST')
     .then(d => { showToast(d.message,'info'); setTimeout(()=>location.reload(),700); });
-}
+});}
 </script>
 @endpush

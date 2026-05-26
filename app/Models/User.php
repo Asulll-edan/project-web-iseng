@@ -28,10 +28,17 @@ class User extends Authenticatable
 
     // ── Roles ─────────────────────────────────────────────
     public function isSuperadmin(): bool { return $this->role === 'superadmin'; }
+    public function isAdmin(): bool      { return $this->role === 'admin'; }
+    public function isManager(): bool    { return $this->role === 'manager'; }
     public function isKasir(): bool      { return $this->role === 'kasir'; }
     public function isKitchen(): bool    { return $this->role === 'kitchen'; }
     public function isCustomer(): bool   { return $this->role === 'customer'; }
     public function isActive(): bool     { return $this->status === 'active'; }
+    public function isStaff(): bool      { return in_array($this->role, ['superadmin','admin','manager','kasir','kitchen']); }
+    public function canAccessAdmin(): bool { return in_array($this->role, ['superadmin','admin','manager']); }
+    public function hasPermission(string $permission): bool {
+        return \App\Models\RolePermission::roleHas($this->role, $permission);
+    }
 
     // ── Relationships ──────────────────────────────────────
     public function profile()

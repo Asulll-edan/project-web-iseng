@@ -121,12 +121,11 @@
 
 @push('scripts')
 <script>
-function cancelOrder(id, btn) {
-    if(!confirm('Batalkan order ini?')) return;
-    btn.disabled = true;
+function cancelOrder(id,btn){confirmDanger('Batalkan Order?','Tindakan ini tidak bisa dibatalkan.',()=>{
+    btn.disabled=true;
     ajax('/admin/orders/'+id+'/cancel','POST')
     .then(d => { showToast(d.message,'info'); setTimeout(()=>location.reload(),700); })
     .catch(()=>btn.disabled=false);
-}
+});}
 </script>
 @endpush

@@ -8,23 +8,15 @@ use Illuminate\Http\Request;
 
 class ChatbotController extends Controller
 {
-    // public function __construct(private ChatbotService $chatbot) {}
-    private $chatbot;
-
-public function __construct(ChatbotService $chatbot)
-{
-    $this->chatbot=$chatbot;
-}
+    public function __construct(private ChatbotService $chatbot) {}
 
     public function respond(Request $request)
     {
         $request->validate(['message' => 'required|string|max:500']);
 
-        $reply = $this->chatbot->respond($request->message);
+        $history = $request->get('history', []);
+        $result  = $this->chatbot->respond($request->message, $history);
 
-        return response()->json([
-            'reply'     => $reply,
-            'timestamp' => now()->format('H:i'),
-        ]);
+        return response()->json($result);
     }
 }

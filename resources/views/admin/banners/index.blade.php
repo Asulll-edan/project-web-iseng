@@ -59,7 +59,7 @@
                         <i class="ti ti-edit" style="font-size:14px"></i>
                     </button>
                     @if(!$banner->trashed())
-                    <form action="{{ route('admin.banners.destroy',$banner->id) }}" method="POST" onsubmit="return confirm('Hapus banner ini?')">
+                    <form action="{{ route('admin.banners.destroy',$banner->id) }}" method="POST" onsubmit="return false" onclick="this.closest('form').submit()">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn-icon btn-icon-red" title="Hapus">
                             <i class="ti ti-trash" style="font-size:14px"></i>

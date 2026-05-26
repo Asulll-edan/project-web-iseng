@@ -128,19 +128,22 @@ function hideProof() {
     document.getElementById('proof-modal').classList.remove('show');
 }
 function approveTopup(id, btn) {
-    if(!confirm('Approve topup ini? Saldo akan langsung masuk ke wallet user.')) return;
-    btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader"></i>';
-    ajax('/admin/wallet/topup/'+id+'/approve','POST')
-    .then(d => { showToast(d.message,'success'); setTimeout(()=>location.reload(),800); })
-    .catch(()=>{ btn.disabled=false; btn.innerHTML='<i class="ti ti-check"></i> Approve'; });
+    confirmAction('Approve Topup?','Saldo akan langsung masuk ke wallet user.',()=>{
+        btn.disabled=true; btn.innerHTML='<i class="ti ti-loader"></i>';
+        ajax('/admin/wallet/topup/'+id+'/approve','POST')
+        .then(d=>{showToast(d.message,'success');setTimeout(()=>location.reload(),800);})
+        .catch(()=>{btn.disabled=false;btn.innerHTML='<i class="ti ti-check"></i> Approve';});
+    },'Ya, Approve');
 }
 function rejectTopup(id, btn) {
-    const note = prompt('Alasan penolakan (opsional):');
-    if(note === null) return;
-    btn.disabled = true;
-    ajax('/admin/wallet/topup/'+id+'/reject','POST',{note})
-    .then(d => { showToast(d.message,'info'); setTimeout(()=>location.reload(),800); })
-    .catch(()=>btn.disabled=false);
+    Swal.fire({title:'Tolak Topup?',input:'text',inputPlaceholder:'Alasan penolakan (opsional)',icon:'warning',showCancelButton:true,confirmButtonColor:'#c0392b',cancelButtonColor:'#6b7c72',confirmButtonText:'Tolak',cancelButtonText:'Batal'})
+    .then(r=>{
+        if(!r.isConfirmed) return;
+        btn.disabled=true;
+        ajax('/admin/wallet/topup/'+id+'/reject','POST',{note:r.value||''})
+        .then(d=>{showToast(d.message,'info');setTimeout(()=>location.reload(),800);})
+        .catch(()=>btn.disabled=false);
+    });
 }
 </script>
 @endpush
