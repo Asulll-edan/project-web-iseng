@@ -9,7 +9,7 @@
         <div class="page-sub">{{ $reservations->total() }} reservasi terdaftar</div>
     </div>
     <div style="display:flex;gap:8px">
-        @foreach([''=>'Semua','pending'=>'Pending','approved'=>'Approved','rejected'=>'Ditolak','cancelled'=>'Dibatalkan'] as $v=>$l)
+@foreach([''=>'Semua','pending'=>'Pending','confirmed'=>'Approved','cancelled'=>'Dibatalkan'] as $v=>$l)
         <a href="?status={{ $v }}" style="padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid {{ request('status')===$v ? 'var(--sage)' : 'var(--border)' }};background:{{ request('status')===$v ? 'var(--sage)' : 'transparent' }};color:{{ request('status')===$v ? '#fff' : 'var(--muted)' }};text-decoration:none">{{ $l }}</a>
         @endforeach
     </div>
@@ -33,7 +33,7 @@
             </thead>
             <tbody>
                 @forelse($reservations as $res)
-                @php $sc=['pending'=>'badge-amber','approved'=>'badge-green','rejected'=>'badge-red','cancelled'=>'badge-gray']; @endphp
+                @php $sc=['pending'=>'badge-amber','confirmed'=>'badge-green','cancelled'=>'badge-gray']; @endphp
                 <tr>
                     <td><span style="font-family:monospace;font-weight:700;font-size:12px;color:var(--sage-dark)">{{ $res->reservation_code }}</span></td>
                     <td>

@@ -26,7 +26,7 @@ class PaymentHistoryController extends Controller
         $payments = $query->paginate(20)->withQueryString();
 
         // Summary per method
-        $summary = Payment::where('status','paid')
+        $summary = Payment::where('status','success')
             ->selectRaw('method, count(*) as total_tx, sum(amount) as total_amount')
             ->groupBy('method')
             ->get();

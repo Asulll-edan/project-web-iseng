@@ -36,7 +36,7 @@ class ReservationController extends Controller
     public function approve(int $id)
     {
         $res = Reservation::where('status','pending')->findOrFail($id);
-        $res->update(['status' => 'approved']);
+        $res->update(['status' => 'confirmed']);
 
         $this->notif->send(
             $res->user_id,
@@ -53,7 +53,7 @@ class ReservationController extends Controller
     public function reject(Request $request, int $id)
     {
         $res = Reservation::where('status','pending')->findOrFail($id);
-        $res->update(['status' => 'rejected', 'admin_note' => $request->note ?? 'Ditolak oleh admin']);
+        $res->update(['status' => 'cancelled', 'admin_note' => $request->note ?? 'Ditolak oleh admin']);
 
         $this->notif->send(
             $res->user_id,

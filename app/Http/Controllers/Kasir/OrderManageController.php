@@ -31,7 +31,7 @@ public function __construct(NotificationService $notif){
             $query->where('order_number', 'ilike', "%{$request->search}%");
         }
 
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->wantsJson()) {
             $orders = $query->get();
             return response()->json([
                 'orders' => $orders->map(fn($o) => $this->formatOrder($o)),

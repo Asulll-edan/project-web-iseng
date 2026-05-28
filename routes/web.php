@@ -90,9 +90,9 @@ Route::middleware(['auth', 'role:customer', 'check.banned'])->group(function () 
 Route::prefix('kasir')->name('kasir.')->middleware(['auth', 'role:kasir,superadmin', 'check.banned'])->group(function () {
     Route::get('/',                       [App\Http\Controllers\Kasir\KasirController::class,       'dashboard'])->name('dashboard');
     Route::get('/orders',                 [App\Http\Controllers\Kasir\OrderManageController::class, 'index'])->name('orders.index');
+    Route::get('/orders/poll',            [App\Http\Controllers\Kasir\OrderManageController::class, 'poll'])->name('orders.poll');
     Route::get('/orders/{id}',            [App\Http\Controllers\Kasir\OrderManageController::class, 'show'])->name('orders.show');
     Route::post('/orders/{id}/status',    [App\Http\Controllers\Kasir\OrderManageController::class, 'updateStatus'])->name('orders.status');
-    Route::get('/orders/poll',            [App\Http\Controllers\Kasir\OrderManageController::class, 'poll'])->name('orders.poll');
 });
 
 // ── Kitchen ───────────────────────────────────────────────────────────────────

@@ -45,31 +45,41 @@ public function __construct(WalletService $walletService){
         });
     }
 
-    private function addLoyaltyPoints(User $user, Order $order, int $points): void
-    {
-        $lp = LoyaltyPoint::firstOrCreate(['user_id' => $user->id], [
-            'total_points' => 0, 'used_points' => 0, 'available_points' => 0,
-        ]);
+   private function addLoyaltyPoints(User $user, Order $order, int $points): void
+{
+    // Guard: skip kalau sudah pernah dapat poin dari order ini
+    $exists = LoyaltyPointLog::where('order_id', $order->id)
+        ->where('type', 'earned')
+        ->exists();
 
-        $lp->increment('total_points', $points);
-        $lp->increment('available_points', $points);
+    if ($exists) return;
 
-        LoyaltyPointLog::create([
-            'user_id'     => $user->id,
-            'order_id'    => $order->id,
-            'points'      => $points,
-            'type'        => 'earn',
-            'description' => "Poin dari order #{$order->order_number}",
-        ]);
+    $lp = LoyaltyPoint::firstOrCreate(['user_id' => $user->id], [
+        'total_points' => 0, 'used_points' => 0, 'available_points' => 0,
+    ]);
 
-        $order->update(['loyalty_points_earned' => $points]);
-    }
+    $lp->increment('total_points', $points);
+    $lp->increment('available_points', $points);
+
+    LoyaltyPointLog::create([
+        'user_id'     => $user->id,
+        'order_id'    => $order->id,
+        'points'      => $points,
+        'type'        => 'earned',
+        'description' => "Poin dari order #{$order->order_number}",
+    ]);
+
+    $order->update(['loyalty_points_earned' => $points]);
+}
 
     private function processCashback(User $user, Order $order): void
     {
-        $membership = $user->membership;
-        if (!$membership || $membership->tier === Membership::TIER_NONE) return;
-        if ($membership->cashback_rate <= 0) return;
+         $exists = CashbackLog::where('order_id', $order->id)->exists();
+    if ($exists) return;
+
+    $membership = $user->membership;
+    if (!$membership || $membership->tier === Membership::TIER_NONE) return;
+    if ($membership->cashback_rate <= 0) return;
 
         $cashback = round($order->total_amount * ($membership->cashback_rate / 100));
         if ($cashback <= 0) return;

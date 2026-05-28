@@ -40,7 +40,7 @@ class ReservationController extends Controller
         // Check table conflicts
         $conflict = Reservation::where('table_id', $request->table_id)
             ->where('reservation_date', $request->reservation_date)
-            ->where('status', 'approved')
+            ->where('status', 'confirmed')
             ->whereBetween('reservation_time', [
                 now()->setTimeFromTimeString($request->reservation_time)->subHours(2),
                 now()->setTimeFromTimeString($request->reservation_time)->addHours(2),
@@ -69,7 +69,7 @@ class ReservationController extends Controller
     public function cancel(int $id)
     {
         $reservation = Reservation::where('user_id', Auth::id())
-            ->whereIn('status', ['pending', 'approved'])
+            ->whereIn('status', ['pending', 'confirmed'])
             ->findOrFail($id);
 
         $reservation->update(['status' => 'cancelled']);

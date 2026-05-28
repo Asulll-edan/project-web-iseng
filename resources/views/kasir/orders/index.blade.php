@@ -111,8 +111,6 @@ function loadOrders(forceRefresh=false) {
         if(d.counts) {
             document.getElementById('cnt-menunggu').textContent = d.counts.menunggu||0;
             document.getElementById('cnt-cooking').textContent  = d.counts.cooking||0;
-            document.getElementById('count-menunggu').textContent = d.counts.menunggu||0;
-            document.getElementById('count-cooking').textContent  = d.counts.cooking||0;
         }
         document.getElementById('last-update').textContent = 'Update: '+new Date().toLocaleTimeString('id-ID',{timeZone:'Asia/Jakarta'});
     }).catch(()=>{});

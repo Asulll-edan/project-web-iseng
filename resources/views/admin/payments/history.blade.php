@@ -70,7 +70,7 @@
         </select>
         <select class="form-select" style="width:auto" onchange="window.location='?status='+this.value+'&date={{ request('date') }}'">
             <option value="">Semua Status</option>
-            <option value="paid" {{ request('status')==='paid'?'selected':'' }}>Paid</option>
+            <option value="success" {{ request('status')==='success'?'selected':'' }}>Success</option>
             <option value="pending" {{ request('status')==='pending'?'selected':'' }}>Pending</option>
         </select>
     </div>
@@ -112,7 +112,7 @@
                         </td>
                         <td style="font-weight:700;font-size:14px;color:var(--sage-dark)">Rp {{ number_format($pay->amount,0,',','.') }}</td>
                         <td>
-                            <span class="badge {{ $pay->status==='paid' ? 'badge-green' : 'badge-amber' }}">{{ ucfirst($pay->status) }}</span>
+                            <span class="badge {{ $pay->status==='success' ? 'badge-green' : 'badge-amber' }}">{{ ucfirst($pay->status) }}</span>
                             @if($pay->paid_at)
                             <div style="font-size:10px;color:var(--muted);margin-top:2px">{{ $pay->paid_at->format('H:i') }}</div>
                             @endif

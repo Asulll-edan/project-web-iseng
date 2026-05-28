@@ -11,6 +11,8 @@ use App\Services\MembershipService;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class OrderController extends Controller
 {
@@ -101,22 +103,42 @@ class OrderController extends Controller
         return view('customer.order.tracking', compact('order'));
     }
 
-    public function complete(int $id)
-    {
+   public function complete(int $id)
+{
+    try {
         $order = Order::where('user_id', Auth::id())
-            ->where('status', Order::STATUS_SELESAI)
+            ->whereIn('status', [Order::STATUS_SELESAI, Order::STATUS_COMPLETED])
             ->findOrFail($id);
 
-        $this->orderService->updateStatus($order, Order::STATUS_COMPLETED, Auth::user(), 'Diselesaikan oleh customer');
-        $this->membershipService->processOrderCompletion($order);
+        DB::transaction(function () use ($order) {
+            if ($order->status !== Order::STATUS_COMPLETED) {
+                $this->orderService->updateStatus(
+                    $order,
+                    Order::STATUS_COMPLETED,
+                    Auth::user(),
+                    'Diselesaikan oleh customer'
+                );
+            }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Pesanan selesai! Poin loyalty & cashback sudah ditambahkan. 🎉',
-            'points'  => $order->fresh()->loyalty_points_earned,
-            'cashback'=> $order->fresh()->cashback_earned,
+             if ($order->payment) {
+        $order->payment->update([
+            'status'  => 'success',
+            'paid_at' => now(),
         ]);
     }
+            $this->membershipService->processOrderCompletion($order);
+        });
+
+        return response()->json([
+            'success'  => true,
+            'message'  => 'Pesanan selesai! Poin loyalty & cashback sudah ditambahkan. 🎉',
+            'points'   => $order->fresh()->loyalty_points_earned,
+            'cashback' => $order->fresh()->cashback_earned,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
+    }
+}
 
     public function checkVoucher(Request $request)
     {

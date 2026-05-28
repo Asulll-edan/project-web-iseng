@@ -75,9 +75,9 @@
                         @endif
                         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
                             <div class="qty-ctrl">
-                                <button class="qty-btn" onclick="updateQty({{ $item->id }},{{ $item->quantity-1 }})">−</button>
+                                <button class="qty-btn" onclick="changeQty({{ $item->id }},-1)">−</button>
                                 <span id="qty-{{ $item->id }}" style="font-weight:700;font-size:14px;min-width:24px;text-align:center">{{ $item->quantity }}</span>
-                                <button class="qty-btn" onclick="updateQty({{ $item->id }},{{ $item->quantity+1 }})">+</button>
+                                <button class="qty-btn" onclick="changeQty({{ $item->id }},+1)">+</button>
                             </div>
                             <div style="display:flex;align-items:center;gap:12px">
                                 <div style="font-weight:700;font-size:15px;color:var(--sage-dark)" id="sub-{{ $item->id }}">
@@ -188,27 +188,46 @@ function updateSummary() {
     document.getElementById('checkout-btn').disabled = selected.size === 0;
 }
 
+function changeQty(itemId, delta) {
+    const current = quantities[itemId] || 1;
+    const newQty  = current + delta;
+
+    if (newQty <= 0) {
+        confirmDanger('Hapus item?', 'Item akan dihapus dari keranjang.', () => {
+            updateQty(itemId, 0);
+        }, 'Hapus');
+        return;
+    }
+    updateQty(itemId, newQty);
+}
+
 function updateQty(itemId, newQty) {
-    if(newQty < 0) return;
-    fetch('/cart/update/'+itemId, {
-        method:'PUT', headers:{'X-CSRF-TOKEN':CSRF,'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({quantity:newQty})
-    }).then(r=>r.json()).then(d=>{
-        if(d.success) {
-            if(newQty===0) {
-                const el=document.getElementById('item-'+itemId);
-                if(el){el.style.opacity='0';setTimeout(()=>el.remove(),200);}
+    fetch('/cart/update/' + itemId, {
+        method: 'PUT',
+        headers: { 'X-CSRF-TOKEN': CSRF, 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ quantity: newQty })
+    })
+    .then(r => r.json())
+    .then(d => {
+        if (d.success) {
+            if (newQty === 0) {
+                const el = document.getElementById('item-' + itemId);
+                if (el) { el.style.opacity = '0'; setTimeout(() => el.remove(), 200); }
                 selected.delete(itemId);
                 delete quantities[itemId];
+                delete ITEM_PRICES[itemId];
             } else {
-                quantities[itemId]=newQty;
-                document.getElementById('qty-'+itemId).textContent=newQty;
-                const price=ITEM_PRICES[itemId]?.price||0;
-                document.getElementById('sub-'+itemId).textContent='Rp '+(price*newQty).toLocaleString('id-ID');
+                quantities[itemId] = newQty;
+                document.getElementById('qty-' + itemId).textContent = newQty;
+                const price = ITEM_PRICES[itemId]?.price || 0;
+                document.getElementById('sub-' + itemId).textContent = 'Rp ' + (price * newQty).toLocaleString('id-ID');
             }
             updateSummary();
+        } else {
+            showToast(d.message || 'Gagal update', 'error');
         }
-    });
+    })
+    .catch(() => showToast('Terjadi kesalahan', 'error'));
 }
 
 function removeItem(itemId) {

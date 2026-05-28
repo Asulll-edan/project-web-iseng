@@ -47,22 +47,23 @@ class CartService
     }
 
     public function updateItem(User $user, int $cartItemId, int $quantity): CartItem
-    {
-        $cart = $this->getOrCreate($user);
-        $item = CartItem::where('cart_id', $cart->id)->where('id', $cartItemId)->firstOrFail();
+{
+    $cart = $this->getOrCreate($user);
+    $item = CartItem::where('cart_id', $cart->id)->where('id', $cartItemId)->firstOrFail();
 
-        if ($quantity <= 0) {
-            $item->delete();
-            return $item;
-        }
-
-        if ($item->menu->stock < $quantity) {
-            throw new \Exception('Stok tidak mencukupi.');
-        }
-
-        $item->update(['quantity' => $quantity]);
+    if ($quantity <= 0) {
+        $item->delete();
         return $item;
     }
+
+    // Tambah batas max dari menu stock atau config
+    if ($item->menu->stock < $quantity) {
+        throw new \Exception('Stok tidak mencukupi.');
+    }
+
+    $item->update(['quantity' => $quantity]);
+    return $item;
+}
 
     public function removeItem(User $user, int $cartItemId): void
     {
