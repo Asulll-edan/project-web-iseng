@@ -18,7 +18,7 @@
 @section('content')
 <div class="page-top">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff">Pesanan Saya</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:28px;font-weight:600;color:#fff">Pesanan Saya</h1>
         <p style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px">{{ $orders->total() }} pesanan</p>
     </div>
 </div>
@@ -107,3 +107,5 @@ function completeOrder(orderId, btn) {
 }
 </script>
 @endpush
+
+

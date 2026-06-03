@@ -4,7 +4,7 @@
         <div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
                 <div style="width:36px;height:36px;background:var(--sage);border-radius:10px;display:flex;align-items:center;justify-content:center">
-                    <i class="ti ti-building-store" style="color:#fff;font-size:18px"></i>
+                    <img src="{{ asset('images/logo.png') }}" alt="Rumahnya Anak Sekolah" style="width:100%;height:auto">
                 </div>
                 <div style="font-weight:700;font-size:16px;color:#e8f0eb">Rumahnya Anak Sekolah</div>
             </div>
@@ -12,8 +12,8 @@
             <div style="display:flex;gap:10px;margin-top:16px">
                 @php $wa = \App\Models\Setting::get('whatsapp_number','6281234567890'); @endphp
                 <a href="https://wa.me/{{ $wa }}" target="_blank" class="footer-icon-btn"><i class="ti ti-brand-whatsapp" style="font-size:18px"></i></a>
-                <a href="#" class="footer-icon-btn"><i class="ti ti-brand-instagram" style="font-size:18px"></i></a>
-                <a href="#" class="footer-icon-btn"><i class="ti ti-brand-tiktok" style="font-size:18px"></i></a>
+                <a href="https://www.instagram.com/msrfi_" class="footer-icon-btn"><i class="ti ti-brand-instagram" style="font-size:18px"></i></a>
+                <a href="https://www.tiktok.com/@.rfii__" class="footer-icon-btn"><i class="ti ti-brand-tiktok" style="font-size:18px"></i></a>
             </div>
         </div>
         <div>
@@ -38,7 +38,7 @@
             <div style="font-weight:600;font-size:13px;color:#e8f0eb;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em">Info</div>
             <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
                 @php
-                    $address = \App\Models\Setting::get('restaurant_address','Jl. Pelajar No. 1');
+                    $address = \App\Models\Setting::get('restaurant_address','Jl. in aja dulu');
                     $open    = \App\Models\Setting::get('open_time','07:00');
                     $close   = \App\Models\Setting::get('close_time','21:00');
                 @endphp
@@ -60,3 +60,4 @@
 @media(max-width:768px){footer>div>div:first-child{grid-template-columns:1fr 1fr!important}}
 </style>
 </footer>
+

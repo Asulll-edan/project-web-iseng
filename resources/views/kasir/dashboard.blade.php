@@ -130,3 +130,4 @@ setInterval(() => {
 }, 15000);
 </script>
 @endpush
+

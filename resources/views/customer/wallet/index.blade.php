@@ -16,7 +16,7 @@
 @section('content')
 <div class="page-top">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff">SOHIBA Wallet</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:28px;font-weight:600;color:#fff">SOHIBA Wallet</h1>
         <p style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px">Dompet digital premium kamu</p>
     </div>
 </div>
@@ -26,7 +26,7 @@
     <div class="wallet-card" data-aos="fade-up">
         <div style="position:relative;z-index:1">
             <div style="font-size:12px;opacity:.7;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Saldo Kamu</div>
-            <div style="font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,42px);font-weight:600;margin-bottom:20px">
+            <div style="font-family:'INeedCoffee',serif;font-size:clamp(28px,6vw,42px);font-weight:600;margin-bottom:20px">
                 Rp {{ number_format($wallet ? $wallet->balance : 0,0,',','.') }}
             </div>
             <div style="display:flex;gap:32px;flex-wrap:wrap">
@@ -80,3 +80,5 @@
     </div>
 </div>
 @endsection
+
+

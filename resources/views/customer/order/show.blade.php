@@ -9,7 +9,7 @@
             <i class="ti ti-chevron-right" style="font-size:13px;margin:0 6px"></i>
             {{ $order->order_number }}
         </div>
-        <h1 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:600;color:#fff">{{ $order->order_number }}</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:26px;font-weight:600;color:#fff">{{ $order->order_number }}</h1>
         <div style="margin-top:8px">
             <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:13px;font-weight:700;background:rgba(255,255,255,.15);color:#fff">
                 <i class="ti ti-circle" style="font-size:8px"></i> {{ $order->status_label }}
@@ -128,3 +128,5 @@ function completeOrder(orderId) {
 }
 </script>
 @endpush
+
+

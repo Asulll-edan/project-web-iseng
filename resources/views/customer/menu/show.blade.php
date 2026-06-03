@@ -65,7 +65,7 @@
                 <span class="badge badge-sage">{{ $menu->category->name }}</span>
             </div>
 
-            <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,30px);font-weight:600;color:var(--text-main);margin-bottom:10px">{{ $menu->name }}</h1>
+            <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,30px);font-weight:600;color:var(--text-main);margin-bottom:10px">{{ $menu->name }}</h1>
 
             <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap">
                 <div style="display:flex;align-items:center;gap:4px;font-size:14px;font-weight:600">
@@ -140,7 +140,7 @@
     <div style="padding-bottom:80px">
         <div style="margin-bottom:24px">
             <div style="font-size:12px;font-weight:700;color:var(--sage);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Ulasan</div>
-            <h2 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600">Apa kata mereka?</h2>
+            <h2 style="font-family:'INeedCoffee',serif;font-size:22px;font-weight:600">Apa kata mereka?</h2>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
             @foreach($menu->reviews->take(6) as $review)
@@ -170,7 +170,7 @@
     {{-- Related --}}
     @if($related->count())
     <div style="padding-bottom:80px">
-        <h2 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin-bottom:20px">Menu Lainnya</h2>
+        <h2 style="font-family:'INeedCoffee',serif;font-size:22px;font-weight:600;margin-bottom:20px">Menu Lainnya</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px">
             @foreach($related as $r)
             <a href="{{ route('menu.show',$r->slug) }}" style="background:var(--warm-white);border-radius:16px;border:1px solid var(--border);overflow:hidden;transition:all .3s;display:block"
@@ -243,3 +243,5 @@ function toggleFav(menuId, btn) {
 }
 </script>
 @endpush
+
+

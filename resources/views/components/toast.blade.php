@@ -11,3 +11,4 @@
 @if(session('info'))
 <script>document.addEventListener('DOMContentLoaded',function(){if(typeof showToast==='function')showToast(@json(session('info')),'info');})</script>
 @endif
+

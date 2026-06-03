@@ -26,7 +26,7 @@
         <a href="{{ route('menu.index') }}" style="color:rgba(255,255,255,.6);font-size:13px;display:inline-flex;align-items:center;gap:6px;margin-bottom:12px">
             <i class="ti ti-arrow-left"></i> Lanjut Belanja
         </a>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">
             Keranjang Belanja
             <span style="font-size:16px;font-weight:400;color:rgba(255,255,255,.6)">({{ $cart->total_items }} item)</span>
         </h1>
@@ -37,7 +37,7 @@
     @if($cart->items->isEmpty())
     <div style="text-align:center;padding:80px 20px">
         <div style="font-size:64px;margin-bottom:20px">🛒</div>
-        <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:600;margin-bottom:10px">Keranjang Kosong</div>
+        <div style="font-family:'INeedCoffee',serif;font-size:24px;font-weight:600;margin-bottom:10px">Keranjang Kosong</div>
         <p style="color:var(--text-muted);margin-bottom:24px">Yuk tambahkan menu favoritmu!</p>
         <a href="{{ route('menu.index') }}" class="btn-primary"><i class="ti ti-bowl-chopsticks"></i> Lihat Menu</a>
     </div>
@@ -276,3 +276,4 @@ function goCheckout() {
 updateSummary();
 </script>
 @endpush
+

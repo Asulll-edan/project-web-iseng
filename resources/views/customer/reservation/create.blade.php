@@ -25,7 +25,7 @@
         <a href="{{ route('reservation.index') }}" style="color:rgba(255,255,255,.6);font-size:13px;display:inline-flex;align-items:center;gap:6px;margin-bottom:12px">
             <i class="ti ti-arrow-left"></i> Kembali
         </a>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Buat Reservasi Meja</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Buat Reservasi Meja</h1>
     </div>
 </div>
 
@@ -138,3 +138,5 @@ function selectTable(id, capacity, el) {
 }
 </script>
 @endpush
+
+

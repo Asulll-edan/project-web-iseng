@@ -14,7 +14,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:va
 .auth-card{background:#fff;border-radius:24px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(90,124,101,.12);padding:40px 44px;width:100%;max-width:420px}
 .auth-brand{text-align:center;margin-bottom:32px}
 .auth-brand-icon{width:56px;height:56px;background:var(--sage);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.auth-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--text);margin-bottom:6px}
+.auth-title{font-family:'INeedCoffee',serif;font-size:24px;font-weight:600;color:var(--text);margin-bottom:6px}
 .auth-sub{font-size:13px;color:var(--muted)}
 .form-group{margin-bottom:18px}
 .form-label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:7px}
@@ -103,3 +103,4 @@ function togglePw(){
 </script>
 </body>
 </html>
+

@@ -15,7 +15,7 @@
 @section('content')
 <div class="page-top">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Membership & Rewards</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Membership & Rewards</h1>
         <p style="color:rgba(255,255,255,.65);font-size:14px;margin-top:6px">Makin banyak order, makin besar keuntunganmu!</p>
     </div>
 </div>
@@ -26,7 +26,7 @@
     <div style="background:linear-gradient(135deg,var(--sage-dark),var(--sage));border-radius:20px;padding:28px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px" data-aos="fade-up">
         <div>
             <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Status Kamu</div>
-            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:6px">
+            <div style="font-family:'INeedCoffee',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:6px">
                 {{ $membership ? ucfirst($membership->tier) : 'Non-Member' }}
                 @if($membership && $membership->tier !== 'none')
                 <span style="font-size:14px;background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;margin-left:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600">Member</span>
@@ -43,7 +43,7 @@
         <div style="text-align:right">
             @if($user->loyaltyPoint)
             <div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:4px">Loyalty Points</div>
-            <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:600;color:#fff">{{ number_format($user->loyaltyPoint->available_points) }}</div>
+            <div style="font-family:'INeedCoffee',serif;font-size:36px;font-weight:600;color:#fff">{{ number_format($user->loyaltyPoint->available_points) }}</div>
             <div style="font-size:12px;color:rgba(255,255,255,.65)">poin tersedia</div>
             @endif
         </div>
@@ -73,7 +73,7 @@
     @endif
 
     {{-- Tier Cards --}}
-    <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin-bottom:20px" data-aos="fade-up">Tingkatan Membership</div>
+    <div style="font-family:'INeedCoffee',serif;font-size:22px;font-weight:600;margin-bottom:20px" data-aos="fade-up">Tingkatan Membership</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:40px">
         @foreach($tiers as $tierKey => $tierData)
         @if($tierKey === 'none') @continue @endif
@@ -129,7 +129,7 @@
     {{-- Cashback History --}}
     @if($user->cashbackLogs->count())
     <div data-aos="fade-up">
-        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin-bottom:16px">Riwayat Cashback</div>
+        <div style="font-family:'INeedCoffee',serif;font-size:22px;font-weight:600;margin-bottom:16px">Riwayat Cashback</div>
         <div style="display:flex;flex-direction:column;gap:10px">
             @foreach($user->cashbackLogs as $log)
             <div class="cashback-log-item">
@@ -148,3 +148,5 @@
     @endif
 </div>
 @endsection
+
+

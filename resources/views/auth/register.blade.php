@@ -12,7 +12,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-card{background:#fff;border-radius:24px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(90,124,101,.12);padding:40px 44px;width:100%;max-width:440px}
-.auth-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;text-align:center;margin-bottom:6px}
+.auth-title{font-family:'INeedCoffee',serif;font-size:22px;font-weight:600;text-align:center;margin-bottom:6px}
 .auth-sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:28px}
 .form-group{margin-bottom:16px}
 .form-label{display:block;font-size:13px;font-weight:600;margin-bottom:7px}
@@ -102,3 +102,4 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:va
 </div>
 </body>
 </html>
+

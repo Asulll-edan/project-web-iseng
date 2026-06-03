@@ -48,7 +48,7 @@
         }
 
         .hero-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'INeedCoffee', serif;
             font-size: clamp(38px, 6vw, 62px);
             font-weight: 600;
             line-height: 1.15;
@@ -209,7 +209,7 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'INeedCoffee', serif;
             font-size: clamp(24px, 4vw, 36px);
             font-weight: 600;
             color: var(--text-main);
@@ -288,7 +288,7 @@
         }
 
         .stat-counter-val {
-            font-family: 'Playfair Display', serif;
+            font-family: 'INeedCoffee', serif;
             font-size: clamp(32px, 5vw, 52px);
             font-weight: 600;
             color: #fff
@@ -368,25 +368,29 @@
                             <i class="ti ti-calendar-event"></i> Reservasi
                         </a>
                     </div>
-                    <div class="hero-stats">
+                    {{-- <div class="hero-stats">
                         @foreach ([['1000+', 'Pelanggan Happy'], ['50+', 'Menu Pilihan'], ['4.9', 'Rating Bintang'], ['3th', 'Berdiri']] as $s)
                             <div class="stat-counter" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                                 <div class="hero-stat-val">{{ $s[0] }}</div>
                                 <div class="hero-stat-label">{{ $s[1] }}</div>
                             </div>
                         @endforeach
-                    </div>
+                    </div> --}}
                 </div>
                 <div data-aos="fade-left" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-                    @foreach (['🍱 Nasi Geprek', '☕ Kopi Susu', '🥗 Salad Wrap', '🍜 Mie Premium', '🍰 Dessert Box', '🥟 Gorengan'] as $item)
-                        <div
-                            style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;backdrop-filter:blur(10px);{{ $loop->odd ? 'margin-top:20px' : '' }}">
-                            <span style="font-size:32px">{{ explode(' ', $item)[0] }}</span>
-                            <span
-                                style="font-size:11px;color:rgba(255,255,255,.65);font-weight:500">{{ implode(' ', array_slice(explode(' ', $item), 1)) }}</span>
-                        </div>
-                    @endforeach
-                </div>
+    @foreach ($bestSeller->take(6) as $menu)
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;height:110px;overflow:hidden;backdrop-filter:blur(10px);{{ $loop->odd ? 'margin-top:20px' : '' }};position:relative">
+            @if ($menu->image)
+                <img src="{{ $menu->image_url }}" style="width:100%;height:100%;object-fit:cover;opacity:.8">
+            @else
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px">🍱</div>
+            @endif
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:linear-gradient(transparent,rgba(0,0,0,.6))">
+                <div style="font-size:11px;color:#fff;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ $menu->name }}</div>
+            </div>
+        </div>
+    @endforeach
+</div>
             </div>
         </div>
     </section>
@@ -596,7 +600,7 @@
                         style="font-size:12px;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">
                         Mulai Sekarang</div>
                     <div
-                        style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:8px">
+                        style="font-family:'INeedCoffee',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:8px">
                         Pesan Sekarang,<br>Nikmati Sekarang!</div>
                     <div style="font-size:14px;color:rgba(255,255,255,.75)">Gratis ongkir untuk member. Daftar sekarang dan
                         dapatkan bonus point!</div>
@@ -680,3 +684,5 @@
         }
     </style>
 @endpush
+
+

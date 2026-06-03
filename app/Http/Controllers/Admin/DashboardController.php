@@ -16,13 +16,24 @@ class DashboardController extends Controller
     {
         $stats = [
             'total_orders_today'   => Order::whereDate('created_at', today())->count(),
-            'revenue_today'        => Order::whereDate('created_at', today())->where('payment_status','paid')->sum('total_amount'),
-            'active_orders'        => Order::whereIn('status', ['menunggu','cooking'])->count(),
-            'total_customers'      => User::where('role','customer')->count(),
-            'pending_topup'        => TopupRequest::where('status','pending')->count(),
-            'pending_reservation'  => Reservation::where('status','pending')->count(),
-            'total_revenue_month'  => Order::whereMonth('created_at', now()->month)->where('payment_status','paid')->sum('total_amount'),
-            'new_customers_month'  => User::where('role','customer')->whereMonth('created_at', now()->month)->count(),
+            'revenue_today' => Order::whereDate('created_at', today())
+                ->whereIn('status', ['selesai', 'completed'])
+                ->sum('total_amount'),
+            'active_orders'        => Order::whereIn('status', ['menunggu', 'cooking'])->count(),
+            'total_customers'      => User::where('role', 'customer')->count(),
+            'pending_topup'        => TopupRequest::where('status', 'pending')->count(),
+            'pending_reservation'  => Reservation::where('status', 'pending')->count(),
+            'total_revenue_month' => Order::whereBetween('created_at', [
+                now()->startOfMonth(),
+                now()->endOfMonth()
+            ])
+                ->whereIn('payment_status', ['paid', 'pending'])
+                ->whereIn('status', ['selesai', 'completed'])
+                ->sum('total_amount'),
+
+            'new_customers_month' => User::where('role', 'customer')
+                ->whereBetween('created_at', [now()->startOfMonth(), now()->endOfMonth()])
+                ->count(),
         ];
 
         // Revenue last 7 days
@@ -32,21 +43,25 @@ class DashboardController extends Controller
             $revenueChart[] = [
                 'date'    => $date->format('d M'),
                 'revenue' => (float) Order::whereDate('created_at', $date->toDateString())
-                    ->where('payment_status','paid')->sum('total_amount'),
+->whereIn('status', ['selesai','completed'])->sum('total_amount'),
                 'orders'  => Order::whereDate('created_at', $date->toDateString())->count(),
             ];
         }
 
-        $recentOrders = Order::with(['user','items'])
+        $recentOrders = Order::with(['user', 'items'])
             ->latest()->take(8)->get();
 
-        $topMenus = Menu::orderBy('order_count','desc')->take(5)->get();
+        $topMenus = Menu::orderBy('order_count', 'desc')->take(5)->get();
 
         $recentTopups = TopupRequest::with('user')
-            ->where('status','pending')->latest()->take(5)->get();
+            ->where('status', 'pending')->latest()->take(5)->get();
 
         return view('admin.dashboard', compact(
-            'stats', 'revenueChart', 'recentOrders', 'topMenus', 'recentTopups'
+            'stats',
+            'revenueChart',
+            'recentOrders',
+            'topMenus',
+            'recentTopups'
         ));
     }
 }

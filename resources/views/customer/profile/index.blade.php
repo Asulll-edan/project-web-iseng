@@ -29,7 +29,7 @@
 @section('content')
 <div class="page-top">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Profil Saya</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Profil Saya</h1>
     </div>
 </div>
 
@@ -400,3 +400,4 @@ function toggleDark() {
 }
 </script>
 @endpush
+

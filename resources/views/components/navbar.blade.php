@@ -4,11 +4,13 @@
     {{-- Brand --}}
     <a href="{{ route('home') }}" style="display:flex;align-items:center;gap:10px;flex-shrink:0">
         <div style="width:36px;height:36px;background:var(--sage);border-radius:10px;display:flex;align-items:center;justify-content:center">
-            <i class="ti ti-building-store" style="color:#fff;font-size:18px"></i>
+                    <img src="{{ asset('images/logo.png') }}" alt="Rumahnya Anak Sekolah" style="width:100%;height:auto">
         </div>
         <div>
-            <div style="font-weight:700;font-size:15px;line-height:1.2">Rumahnya</div>
-            <div style="font-size:10px;color:var(--text-muted);line-height:1.2;font-weight:500">Anak Sekolah</div>
+            <div style="font-family:'INeedCoffee',serif;font-size:18px;line-height:1.1">
+    <div>Rumahnya</div>
+    <div style="font-size:13px">Anak Sekolah</div>
+</div>
         </div>
     </a>
 
@@ -98,3 +100,4 @@ document.addEventListener('click',e=>{
     if(wrap&&!wrap.contains(e.target))document.getElementById('user-dropdown').style.display='none';
 });
 </script>
+

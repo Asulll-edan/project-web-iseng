@@ -4,7 +4,7 @@
 @section('content')
 <div style="padding:110px 0 40px;background:linear-gradient(135deg,#1a2e22,#2c3e35)">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:#fff">Topup SOHIBA Wallet</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:28px;font-weight:600;color:#fff">Topup SOHIBA Wallet</h1>
         <p style="font-size:13px;color:rgba(255,255,255,.6);margin-top:6px">Saldo saat ini: <strong style="color:#fff">Rp {{ number_format($wallet ? $wallet->balance : 0,0,',','.') }}</strong></p>
     </div>
 </div>
@@ -101,3 +101,5 @@ function previewProof(e) {
 }
 </script>
 @endpush
+
+

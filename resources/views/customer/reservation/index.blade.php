@@ -16,7 +16,7 @@
 @section('content')
 <div class="page-top">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Reservasi Meja</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Reservasi Meja</h1>
         <p style="color:rgba(255,255,255,.65);font-size:14px;margin-top:6px">Pesan meja untuk pengalaman makan yang lebih nyaman</p>
     </div>
 </div>
@@ -106,3 +106,5 @@ function cancelRes(id, btn) {
 }
 </script>
 @endpush
+
+

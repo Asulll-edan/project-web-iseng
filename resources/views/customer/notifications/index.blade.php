@@ -4,7 +4,7 @@
 @section('content')
 <div style="padding:110px 0 40px;background:linear-gradient(135deg,#1a2e22,#2c3e35)">
     <div class="container">
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Notifikasi</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Notifikasi</h1>
     </div>
 </div>
 
@@ -74,3 +74,5 @@ function markAll() {
 }
 </script>
 @endpush
+
+

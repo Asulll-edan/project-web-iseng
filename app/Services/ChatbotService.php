@@ -61,7 +61,7 @@ public function respond(string $message, array $history = []): array
         $open   = Setting::get('open_time', '07:00');
         $close  = Setting::get('close_time', '21:00');
         $wa     = Setting::get('whatsapp_number', '6281234567890');
-        $addr   = Setting::get('restaurant_address', 'Jl. Pelajar No. 1');
+        $addr   = Setting::get('restaurant_address', 'Jl. in aja dulu');
         $now    = now()->timezone('Asia/Jakarta');
         $isOpen = $now->between(
             \Carbon\Carbon::createFromTimeString($open,  'Asia/Jakarta'),

@@ -39,7 +39,7 @@
         <a href="{{ route('cart.index') }}" style="color:rgba(255,255,255,.6);font-size:13px;display:inline-flex;align-items:center;gap:6px;margin-bottom:12px">
             <i class="ti ti-arrow-left"></i> Kembali ke Keranjang
         </a>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Checkout</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(22px,4vw,32px);font-weight:600;color:#fff">Checkout</h1>
     </div>
 </div>
 
@@ -373,3 +373,4 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
 </script>
 <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 @endpush
+

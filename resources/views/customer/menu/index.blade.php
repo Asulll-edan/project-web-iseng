@@ -28,7 +28,7 @@
 <div class="page-hero">
     <div class="container" style="text-align:center">
         <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Pilih Menu</div>
-        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,42px);font-weight:600;color:#fff;margin-bottom:10px">Semua Menu</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:clamp(28px,5vw,42px);font-weight:600;color:#fff;margin-bottom:10px">Semua Menu</h1>
         <p style="font-size:14px;color:rgba(255,255,255,.65)">Menu lezat pilihan pelajar dengan harga yang bersahabat</p>
     </div>
 </div>
@@ -195,3 +195,5 @@ function toggleFav(menuId, btn) {
 }
 </script>
 @endpush
+
+

@@ -16,7 +16,7 @@
 @section('content')
 <div style="padding:110px 0 40px;background:linear-gradient(135deg,#1a2e22,#2c3e35)">
     <div class="container" style="text-align:center">
-        <h1 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:600;color:#fff">Live Tracking</h1>
+        <h1 style="font-family:'INeedCoffee',serif;font-size:26px;font-weight:600;color:#fff">Live Tracking</h1>
         <div style="font-size:14px;color:rgba(255,255,255,.6);margin-top:6px">{{ $order->order_number }}</div>
         <div id="status-badge" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 18px;border-radius:20px;background:rgba(255,255,255,.15);color:#fff;font-weight:700;font-size:14px">
             <span style="width:8px;height:8px;border-radius:50%;background:#4ade80;animation:blink 1s infinite"></span>
@@ -117,3 +117,5 @@ function completeOrder(orderId) {
 </script>
 <style>@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}</style>
 @endpush
+
+
