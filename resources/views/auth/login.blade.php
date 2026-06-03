@@ -84,14 +84,6 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:va
         Belum punya akun? <a href="{{ route('register') }}" style="color:var(--sage);font-weight:600">Daftar gratis</a>
     </div>
 
-    <div class="divider">Akun Demo</div>
-    <div class="demo-accounts">
-        <div class="demo-row"><span style="font-weight:600">Superadmin</span><span style="color:var(--muted)">superadmin@ras.com</span></div>
-        <div class="demo-row"><span style="font-weight:600">Kasir</span><span style="color:var(--muted)">kasir@ras.com</span></div>
-        <div class="demo-row"><span style="font-weight:600">Kitchen</span><span style="color:var(--muted)">kitchen@ras.com</span></div>
-        <div class="demo-row"><span style="font-weight:600">Customer</span><span style="color:var(--muted)">customer@ras.com</span></div>
-        <div style="margin-top:6px;color:var(--muted);text-align:center">Password: <strong>password</strong></div>
-    </div>
 </div>
 <script>
 function togglePw(){
