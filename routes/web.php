@@ -8,6 +8,14 @@ Route::middleware('guest')->group(function () {
     Route::post('/login',   [App\Http\Controllers\Auth\LoginController::class,    'login']);
     Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register',[App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
+    Route::get(
+    '/verify-otp/{user}',[App\Http\Controllers\Auth\RegisterController::class, 'showOtpForm']
+)->name('verify.otp.form');
+
+Route::post(
+    '/verify-otp',[App\Http\Controllers\Auth\RegisterController::class, 'verifyOtp']
+)->name('verify.otp');
 });
 
 Route::post('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])

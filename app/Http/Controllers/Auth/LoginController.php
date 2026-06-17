@@ -37,6 +37,14 @@ class LoginController extends Controller
                 return back()->with('error', 'Akun Anda telah disuspend.');
             }
 
+            if(!$user->status === 'pending' || !$user->email_verified_at){
+                Auth::logout();
+
+                 return back()->withErrors([
+        'email' => 'Silakan verifikasi email terlebih dahulu.'
+    ]);
+            }
+
             // Log login history
             LoginHistory::create([
                 'user_id'    => $user->id,
