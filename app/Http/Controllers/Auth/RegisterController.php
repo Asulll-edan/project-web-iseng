@@ -47,23 +47,33 @@ class RegisterController extends Controller
 
         EmailVerification::where('user_id', $user->id)->delete();
 
-        EmailVerification::create([
-            'user_id'    => $user->id,
-            'otp'        => $otp,
-            'expired_at' => now()->addMinutes(10),
-        ]);
+EmailVerification::create([
+    'user_id'    => $user->id,
+    'otp'        => $otp,
+    'expired_at' => now()->addMinutes(10),
+]);
 
-        Mail::send(
-    'emails.otp',
-    [
-        'otp' => $otp,
-        'name' => $user->name
-    ],
-    function ($message) use ($user) {
-        $message->to($user->email)
-            ->subject('Kode Verifikasi Akun');
-    }
-);
+try {
+
+    Mail::send(
+        'emails.otp',
+        [
+            'otp' => $otp,
+            'name' => $user->name
+        ],
+        function ($message) use ($user) {
+            $message->to($user->email)
+                ->subject('Kode Verifikasi Akun');
+        }
+    );
+
+} catch (\Exception $e) {
+
+    dd($e->getMessage());
+
+}
+
+return redirect()->route('verify.otp.form', $user->id);
 
         return redirect()->route('verify.otp.form', $user->id);
     }
