@@ -11,7 +11,7 @@
 ">
 <div style="text-align:center;padding:25px">
     <img
-        src="https://rumah-sekolah.up.railway.app/images/logo.png"
+        src="https://rumah-sekolah.up.railway.app/login"
         alt="Rumahnya Anak Sekolah"
         style="height:70px">
 </div>
