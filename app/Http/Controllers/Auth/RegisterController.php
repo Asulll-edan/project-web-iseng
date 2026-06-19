@@ -54,8 +54,10 @@ class RegisterController extends Controller
         ]);
 
 
-      dd(config('mail.mailers.smtp'));
-        
+dd([
+    'env_mailer' => env('MAIL_MAILER'),
+    'default_mailer' => config('mail.default'),
+]);        
         Mail::send(
     'emails.otp',
     [
