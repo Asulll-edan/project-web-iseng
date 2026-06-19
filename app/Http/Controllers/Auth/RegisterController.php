@@ -54,19 +54,26 @@ class RegisterController extends Controller
         ]);
 
 
-dd('LEWAT SINI');      
-    //     Mail::send(
-    // 'emails.otp',
-    // [
-    //     'otp' => $otp,
-    //     'name' => $user->name
-    // ],
-    // function ($message) use ($user) {
-    //     $message->to($user->email)
-    //     ->subject('Kode Verifikasi Akun');
-    //     }
-    //     );
-        dd('sesudah email');
+try {
+    Mail::send(
+        'emails.otp',
+        [
+            'otp' => $otp,
+            'name' => $user->name
+        ],
+        function ($message) use ($user) {
+            $message->to($user->email)
+                ->subject('Kode Verifikasi Akun');
+        }
+    );
+
+    dd('EMAIL BERHASIL');
+} catch (\Throwable $e) {
+    dd(
+        get_class($e),
+        $e->getMessage()
+    );
+}
 
         return redirect()->route('verify.otp.form', $user->id);
     }
