@@ -54,7 +54,13 @@ class RegisterController extends Controller
         ]);
 
 
-        dd('sebelum email');
+       dd([
+    'MAIL_MAILER' => env('MAIL_MAILER'),
+    'MAIL_HOST' => env('MAIL_HOST'),
+    'MAIL_PORT' => env('MAIL_PORT'),
+    'MAIL_USERNAME' => env('MAIL_USERNAME'),
+    'MAIL_ENCRYPTION' => env('MAIL_ENCRYPTION'),
+]);
         
         Mail::send(
     'emails.otp',
