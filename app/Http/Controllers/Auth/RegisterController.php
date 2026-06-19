@@ -53,25 +53,25 @@ EmailVerification::create([
     'expired_at' => now()->addMinutes(10),
 ]);
 
-try {
+// try {
 
-    Mail::send(
-        'emails.otp',
-        [
-            'otp' => $otp,
-            'name' => $user->name
-        ],
-        function ($message) use ($user) {
-            $message->to($user->email)
-                ->subject('Kode Verifikasi Akun');
-        }
-    );
+//     Mail::send(
+//         'emails.otp',
+//         [
+//             'otp' => $otp,
+//             'name' => $user->name
+//         ],
+//         function ($message) use ($user) {
+//             $message->to($user->email)
+//                 ->subject('Kode Verifikasi Akun');
+//         }
+//     );
 
-} catch (\Exception $e) {
+// } catch (\Exception $e) {
 
-    dd($e->getMessage());
+//     dd($e->getMessage());
 
-}
+// }
 
 return redirect()->route('verify.otp.form', $user->id);
 
