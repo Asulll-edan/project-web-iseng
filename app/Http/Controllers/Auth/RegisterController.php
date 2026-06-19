@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'expired_at' => now()->addMinutes(10),
         ]);
 
+
+        dd('sebelum email');
+        
         Mail::send(
     'emails.otp',
     [
@@ -61,9 +64,10 @@ class RegisterController extends Controller
     ],
     function ($message) use ($user) {
         $message->to($user->email)
-            ->subject('Kode Verifikasi Akun');
-    }
-);
+        ->subject('Kode Verifikasi Akun');
+        }
+        );
+        dd('sesudah email');
 
         return redirect()->route('verify.otp.form', $user->id);
     }
